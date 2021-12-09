@@ -29,3 +29,23 @@
 #last-input {
     margin-top: 1em;
 }
+
+
+@media only screen and (max-width:560px){
+
+    .input-cont {
+        flex-direction:column;
+        margin: auto;
+        width: auto;
+    }
+
+    .input-cont input {
+        margin-top: 1em;
+    }
+
+    .registration-form {
+        height: fit-content;
+        padding: 1em;
+    }
+
+}

@@ -8,6 +8,13 @@ import Candidate from './Candidate';
 
 const DevoHomePage=()=>{
 
+    try{
+        const ethereum = { window }
+        console.log(ethereum)
+    } catch(err) {
+        console.log(err)
+    }
+
 
     const candidates = [
 
@@ -32,14 +39,18 @@ const DevoHomePage=()=>{
 
 
                 <div className="candidates">
-                    <h3>Candidates</h3>
-                    {
-                         candidates.map((candidate, index)=>{
-                             return(
-                                    <Candidate candidate={candidate} key={index}/>
-                             )
-                         })
-                    }
+                    <h2 className="canditates-header">Candidates</h2>
+
+                    <div className="candidate-list">
+                        {
+                            candidates.map((candidate, index)=>{
+                                return(
+                                        <Candidate candidate={candidate} key={index}/>
+                                )
+                            })
+                        }
+                    </div>
+                    
                    
                 </div>
                 
