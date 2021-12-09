@@ -1,0 +1,18 @@
+.homepage-container {
+    background: red;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background-image: url('../images/bg1.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;   
+}
+
+.overlay {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, .4);
+    overflow: hidden;
+}
