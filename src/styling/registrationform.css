@@ -1,0 +1,31 @@
+.registration-form {
+    display: flex;
+    justify-content: center;
+    background: rgba(255, 255, 255, .3);
+    margin: auto;
+    flex-direction: column;
+    height: 250px;
+    padding: 0.5em;
+    
+}
+
+.registration-form input {
+    border:none;
+    border-radius: 10px;
+    padding: 20px;
+    width: 200px;
+    margin: auto;
+    color:  rgba(0, 0, 0, .6);
+}
+
+.input-cont {
+    width: 50%;
+    margin: auto;
+    display: flex;
+   
+    justify-content: space-between;
+}
+
+#last-input {
+    margin-top: 1em;
+}

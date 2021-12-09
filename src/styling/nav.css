@@ -12,6 +12,13 @@
 .navbar h1 {
     color: white;
     padding: 10px;
+    margin-left: 20px;
+    font-size: 2em;
+    background-image: linear-gradient(45deg,   #af4261, #48a1dd);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color:transparent;
+   
+   
 }
 
 .navbar .header-options {
@@ -19,7 +26,18 @@
     margin: auto;
     margin-right: 1em;
     padding: 1em;
-    background: rgb(145, 145, 34);
     border-radius: 10px;
+    
+}
+
+@media only screen and (max-width:560px){
+    .navbar .header-options {
+        font-size: 12px;
+    }
+
+    .navbar h1 {
+        font-size: 1.5em;
+    }
+
     
 }

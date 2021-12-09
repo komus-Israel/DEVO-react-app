@@ -1,18 +1,85 @@
 .homepage-container {
-    background: red;
     height: 100%;
     width: 100%;
-    position: absolute;
+    position:fixed;
+    overflow: scroll;
     background-image: url('../images/bg1.jpg');
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;   
+    background-attachment: fixed;
+    
 }
 
 .overlay {
     position: fixed;
     height: 100%;
     width: 100%;
-    background: rgba(0, 0, 0, .4);
-    overflow: hidden;
+    background: rgba(0, 0, 0, .3);
+    overflow: scroll;
+    
+}
+
+.welcome-msg {
+    position: absolute;
+    top:30%;
+    margin-left: 20px;
+    width: 40%;
+    border-radius: 12px;
+    padding: 1.5em;
+   
+    
+   
+
+}
+
+.welcome-msg h1, .welcome-msg h2 {
+    text-align: start;
+    background-image: linear-gradient(45deg, #f3ec78, #af4261);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color:transparent;
+    font-size: 2em;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.page-content {
+    position: relative;
+    top: 100%;
+}
+
+.connect-wallet {
+    border:none;
+    background: linear-gradient(45deg,   #af4261, #48a1dd);
+    padding: 1em;
+    border-radius: 10px;
+    margin-right: 0;
+}
+
+.get-started {
+    color: #f3ec78;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+
+@media only screen and (max-width:560px){
+
+    .welcome-msg h1, .welcome-msg h2 {
+
+        font-size: 20px;
+    }
+
+    .connect-wallet {
+        font-size: 12px;
+    }
+
+}
+
+
+@media only screen and (max-width:360px){
+
+    .welcome-msg h1, .welcome-msg h2 {
+
+        font-size: 15px;
+    }
+
 }
