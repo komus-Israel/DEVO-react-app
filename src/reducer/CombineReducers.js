@@ -5,7 +5,7 @@ import addressReducer from "./addressReducer";
 
 const allReducers = combineReducers(
     {
-        connectWalletReducer,
+        //connectWalletReducer,
         hasWalletReducer,
         addressReducer
     }

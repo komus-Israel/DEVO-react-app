@@ -4,7 +4,7 @@ const hasWalletReducer=(state=false, action)=>{
         case "INSTALLED":
             return true
         default:
-            return false
+            return state
     }
 
 }

@@ -1,12 +1,12 @@
-const connectWalletReducer=(state = "disconnected", action)=>{
+const connectWalletReducer=(state=false, action)=>{
 
     switch(action.type){
-        case "CONNECT":
-            return "connected"
-        case "DISCONNECT":
-            return "disconnected"
+        case "CONNECTED":
+            return action.payload
+        case "DISCONNECTED":
+            return action.payload
         default:
-            return "disconnected"
+            return state
     }
 }
 

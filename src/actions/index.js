@@ -1,12 +1,14 @@
-export const connectWallet=()=>{
+export const connectWallet=(connection)=>{
     return({
-        type:"CONNECT"
+        type:"CONNECTED",
+        payload: connection.state
     })
 }
 
-export const disconnectWallet=()=>{
+export const disconnectWallet=(connection)=>{
     return({
-        type:"DICONNECT"
+        type:"DICONNECTED",
+        payload: connection.state
     })
 }
 
