@@ -15,3 +15,10 @@ export const installedWallet=()=>{
         type:"INSTALLED"
     })
 }
+
+export const address=(data)=>{
+    return({
+        type:"CONNECTED",
+        payload:data
+    })
+}

@@ -7,7 +7,7 @@ import Instructions from './Instructions';
 import { checkEthereum, checkWalletConnection, connectEthereumWallet } from '../functions/functions';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { installedWallet } from '../actions';
+import { installedWallet, address } from '../actions';
 
 
 
@@ -35,15 +35,32 @@ const DevoHomePage=()=>{
 
     useEffect(()=>{
 
-        const handleWalletConnection= async ()=>{
+        const handleWalletInstallation= ()=>{
                 const checkEth = checkEthereum()
                 checkEth && dispatch(installedWallet())
-                console.log(isInstalled)
+
+                console.log(checkEth)
+                
+                /*if (checkEth) {
+                    const checkConnection = await checkWalletConnection()
+                    checkConnection && dispatch(address(checkConnection.data))
+                }*/
         }
 
-        handleWalletConnection()
+        const handleWalletConnection = async ()=>{
+            const checkEth = checkEthereum()
+            if (checkEth) {
+                const checkConnection = await checkWalletConnection()
+                checkConnection && dispatch(address(checkConnection.data))
+
+        }
+    }
+
+        handleWalletInstallation() //&& 
+        //handleWalletConnection()
         
-    })
+        
+    }, [])
   
     return(
         <div className="homepage-container">
