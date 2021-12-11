@@ -1,5 +1,6 @@
 import { useEffect } from "react"
 import { useSelector } from "react-redux"
+import { connectEthereumWallet, disconnectEthereumWallet } from "../functions/functions"
 
 
 
@@ -15,21 +16,17 @@ const WelcomeMsg=()=>{
         state => state.addressReducer
     )
 
-    useEffect(()=>{
-        console.log(connectedAddress)
-    }, [])
-
     return(
         <div className='welcome-msg'>
 
             <h2>A decentralized voting system to vote in your desired candidate for 2023 presidential election</h2>
 
             {
-                isInstalled && connectedAddress.length === 0 ? <button className="connect-wallet">Connect Wallet</button> :
+                isInstalled && connectedAddress.length === 0 ? <button className="connect-wallet" onClick={connectEthereumWallet}>Connect Wallet</button> :
 
                 !isInstalled ? <button className="connect-wallet">Install MetaMask</button> :
 
-                (connectedAddress.length > 0) && <button className="connect-wallet">Disconnect</button>
+                (connectedAddress.length > 0) && <button className="connect-wallet" onClick={disconnectEthereumWallet}>disconnect wallet</button>
 
                 
             }

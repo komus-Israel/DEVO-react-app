@@ -37,7 +37,8 @@ export const checkEthereum=()=>{
 
     try {
         const { ethereum } =  window 
-        if (ethereum){
+        if (ethereum.isMetaMask){
+            console.log(ethereum)
             return ethereum
         } else {
             return false
@@ -49,11 +50,19 @@ export const checkEthereum=()=>{
     
 }
 
-export const connectEthereumWallet=async ()=>{
+export const connectEthereumWallet= async ()=>{
     const ethereum = checkEthereum()
 
     if (ethereum) {
         const connectAccount = await ethereum.request({method: 'eth_requestAccounts'})
         return connectAccount
     }
+}
+
+export const disconnectEthereumWallet= async ()=>{
+    const ethereum = checkEthereum()
+    if (ethereum) {
+        ethereum.request.disconnect()
+    }
+
 }

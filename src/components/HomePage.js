@@ -15,15 +15,6 @@ const DevoHomePage=()=>{
 
     const dispatch = useDispatch()
 
-    /*const isConnected = useSelector(
-        state => state.connectWalletReducer
-    )*/
-
-    const isInstalled = useSelector(
-        state => state.hasWalletReducer
-    )
-
-    
 
 
     const candidates = [
@@ -41,9 +32,10 @@ const DevoHomePage=()=>{
                 
                 if (checkEth) {
 
+                    //  check connected adddresses
+
                     const checkConnection = await checkWalletConnection()
-                    
-                    //checkConnection ? dispatch(connectWallet(checkConnection)) : dispatch(disconnectWallet(checkConnection))
+                
                     checkConnection && dispatch(address(checkConnection.data))
 
                 }
@@ -51,7 +43,6 @@ const DevoHomePage=()=>{
 
         handleWalletInstallation()
        
-        
         
     }, [])
   
@@ -61,13 +52,15 @@ const DevoHomePage=()=>{
             <WelcomeMsg />
 
             <div className="page-content">
+
                 <h2 className="get-started">Let's Get You Started</h2>
 
                 <RegistrationForm />
+
                 <Instructions />
 
-
                 <div className="candidates">
+                    
                     <h2 className="canditates-header">Candidates</h2>
 
                     <div className="candidate-list">
