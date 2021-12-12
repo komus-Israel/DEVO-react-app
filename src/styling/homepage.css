@@ -38,7 +38,7 @@
     background-image: linear-gradient(45deg, #f3ec78, #af4261);
     -webkit-background-clip: text;
     -webkit-text-fill-color:transparent;
-    font-size: 2em;
+    font-size: 2.5em;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
@@ -52,14 +52,17 @@
     background: linear-gradient(45deg,   #af4261, #48a1dd);
     padding: 1em;
     border-radius: 10px;
-    margin-right: 0;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    display: flex;
 }
 
-.get-started, .canditates-header {
-    color: #f3ec78;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+.get-started {
     margin-bottom: 50px;
+    font-size: 2em;
+    font-family: Arial, Helvetica, sans-serif;
+    background-image: linear-gradient(45deg, #f3ec78, #af4261);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color:transparent;
 }
 
 .candidate-list {
@@ -90,10 +93,72 @@
 .canditates-header {
     margin-top: 5em;
     margin-bottom: 2em;
+    font-size: 2em;
+    font-family: Arial, Helvetica, sans-serif;
+    background-image: linear-gradient(45deg, #f3ec78, #af4261);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color:transparent;
 }
 
 .candidate-name, .candidate-party {
     font-weight: bold;
+}
+
+.instruction-cont h2 {
+    color: white;
+    font-size: 3em;
+    width: 60%;
+    font-family: Arial, Helvetica, sans-serif;
+    background-image: linear-gradient(45deg, #f3ec78, #af4261);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color:transparent;
+}
+
+.instruction-cont {
+    display: flex;
+    margin-top: 5em;
+    width: auto;
+    padding: 5em;
+    
+    
+    
+}
+
+.instruction-cont ul {
+    list-style: none;
+    margin: auto;
+    padding: 0;
+}
+
+.main-instruction {
+    background: linear-gradient(45deg,   #af4261, #48a1dd);
+    border-radius: 12px;
+    padding: 2em;
+    box-shadow: 6px 12px 30px black;
+    
+}
+
+
+
+.main-instruction li {
+    padding: 12px;
+    text-align: start;
+    display: flex;
+}
+
+.main-instruction li p {
+    color: white;
+    font-weight: bold;
+}
+
+.svg {
+    margin-top: -50px;
+    border-radius: 12px;
+
+}
+
+.mark-icon {
+    height: 50px;
 }
 
 
@@ -107,6 +172,43 @@
     .connect-wallet {
         font-size: 12px;
     }
+
+    .instruction-cont {
+        flex-direction: column;
+        width: auto;
+        padding: 0;
+    }
+
+    .instruction-cont h2 {
+        
+        font-size: 1.5em;
+        width: 100%; 
+    }
+
+    .get-started {
+        font-size: 1.5em;
+    }
+
+    .cont-withsvg {
+        width: 300px;
+        margin: auto;
+    }
+
+    .mark-icon {
+        height: 30px;
+    }
+
+    .main-instruction li { 
+        align-items: center;
+        font-weight: normal;
+    }
+
+    .svg {
+        margin-top: -40px;
+        border-radius: 12px;
+    
+    }
+    
 
     
 

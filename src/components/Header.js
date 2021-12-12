@@ -8,7 +8,9 @@ const Nav =()=>{
         <nav className='navbar'>
             <h1>DEVO</h1>
             <div className='header-options'>
-                    <a>Vote</a> | <a>Register</a> | <a>Stat</a>
+                    <a>Vote</a>
+                    <a>Register</a>
+                    <a>Stat</a>
             </div>
         </nav>
     )

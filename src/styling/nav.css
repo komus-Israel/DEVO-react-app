@@ -25,10 +25,18 @@
     color: white;
     margin: auto;
     margin-right: 1em;
+
+    
+    
+   
+    
+}
+
+.header-options a {
+    background: rgba(255, 255, 255, .2);
     padding: 1em;
     border-radius: 10px;
-    background: rgba(255, 255, 255, .2);
-    
+    margin-right: 10px;
 }
 
 @media only screen and (max-width:560px){

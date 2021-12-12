@@ -6,14 +6,17 @@ const RegistrationForm=()=>{
             <div className = "input-cont">
                 <input placeholder='First name'/>
                 <input placeholder='Last name'/>
+                <input placeholder='Middle name'/>
             </div>
 
-            <div className = "input-cont">
-                <input placeholder='Middle name'/>
+            <div className = "input-cont" id="last-input">
+                <input placeholder='NIN' />
                 <input placeholder='State'/>
             </div>
+
+            <button className="register">register</button>
             
-            <input placeholder='NIN' id="last-input"/>
+            
         </form>
     )
 }

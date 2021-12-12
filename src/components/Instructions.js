@@ -1,4 +1,15 @@
+import SVG from "./SVG";
+
 const Instructions=()=>{
+
+    const instructions = [
+
+        {instruction: "Install MetaMask Wallet"},
+        {instruction: "Connect Wallet"},
+        {instruction: "Get Registered"},
+        {instruction: "Vote your desired candidate"},
+    ]
+
     return(
         <div className="instruction-cont">
             <div>
@@ -7,13 +18,36 @@ const Instructions=()=>{
                 </h2>
             </div>
 
-            <div className="main-instruction">
-                <ul>
-                    <li>Install MetaMask Wallet</li>
-                    <li>Get Registered</li>
-                    <li>Vote your desired candidate</li>
-                </ul>
+            <div className='cont-withsvg'>
+                <div className="main-instruction">
+                    <ul>
+
+                        {
+                            instructions.map((instruction, index)=>(
+                                <li key={index} >
+                                    <img className="mark-icon" src="./images/mark.png" alt="loading"/>
+                                    <p>{instruction.instruction}</p>
+                                </li>
+                            ))
+                        }
+                        
+                    </ul>
+                </div>
+
+                <div className='svg'>
+                    <SVG />
+                </div>
+
+                {
+                    /*#af4261, #48a1dd*/
+                }
+
+               
             </div>
+
+            
+
+           
 
         </div>
     )
