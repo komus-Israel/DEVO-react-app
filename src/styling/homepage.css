@@ -144,6 +144,7 @@
     padding: 12px;
     text-align: start;
     display: flex;
+    align-items: center;
 }
 
 .main-instruction li p {
@@ -164,9 +165,14 @@
 
 @media only screen and (max-width:560px){
 
+    .welcome-msg {
+        width: 60%;
+    }
+
     .welcome-msg h1, .welcome-msg h2 {
 
-        font-size: 20px;
+        font-size: 1.5em;
+        
     }
 
     .connect-wallet {
@@ -198,8 +204,7 @@
         height: 30px;
     }
 
-    .main-instruction li { 
-        align-items: center;
+    .main-instruction li p{ 
         font-weight: normal;
     }
 
