@@ -1,8 +1,7 @@
 import { useSelector } from "react-redux"
-//import { connectEthereumWallet, disconnectEthereumWallet } from "../functions/functions"
-import { checkEthereum } from "../functions/functions"
+import { connectEthereumWallet, disconnectEthereumWallet } from "../functions/functions"
 import { useDispatch } from "react-redux";
-import { address } from "../actions";
+
 
 
 
@@ -21,25 +20,7 @@ const WelcomeMsg=()=>{
         state => state.addressReducer
     )
 
-    const connectEthereumWallet= async ()=>{
-        const ethereum = checkEthereum()
-    
-        if (ethereum) {
-            const connectAccount = await ethereum.request({method: 'eth_requestAccounts'})
-            dispatch(address(connectAccount))
-            return connectAccount
-        }
-    }
-
-    const disconnectEthereumWallet= async ()=>{
-        const ethereum = checkEthereum()
-        /*if (ethereum) {
-            ethereum.request.disconnect()
-        }*/
-        console.log("disconnected")
-        console.log(ethereum)
-    
-    }
+   
 
     return(
         <div className='welcome-msg'>
@@ -47,7 +28,7 @@ const WelcomeMsg=()=>{
             <h2>A decentralized voting system to vote in your desired candidate for 2023 presidential election</h2>
 
             {
-                isInstalled && connectedAddress.length === 0 ? <button className="connect-wallet" onClick={connectEthereumWallet}>Connect Wallet</button> :
+                isInstalled && connectedAddress.length === 0 ? <button className="connect-wallet" onClick={()=>connectEthereumWallet(dispatch)}>Connect Wallet</button> :
 
                 !isInstalled ? <button className="connect-wallet">Install MetaMask</button> :
 

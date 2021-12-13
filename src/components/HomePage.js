@@ -12,6 +12,7 @@ import { installedWallet, address } from '../actions';
 
 
 
+
 const DevoHomePage=()=>{
 
     const dispatch = useDispatch()

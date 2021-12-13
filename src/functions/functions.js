@@ -1,4 +1,6 @@
 import Web3 from "web3";
+import Vote from '../abi/Vote.json';
+import { address } from "../actions";
 
 
 
@@ -55,12 +57,12 @@ export const checkEthereum=()=>{
     
 }
 
-export const connectEthereumWallet= async ()=>{
+export const connectEthereumWallet= async (dispatch)=>{
     const ethereum = checkEthereum()
 
     if (ethereum) {
         const connectAccount = await ethereum.request({method: 'eth_requestAccounts'})
-        
+        dispatch(address(connectAccount))
         return connectAccount
     }
 }
@@ -75,11 +77,28 @@ export const disconnectEthereumWallet= async ()=>{
 
 }
 
-export const loadBlockchainData=async()=>{
+export const loadBlockchainData=async ()=>{
     const web3 = new Web3(Web3.givenProvider || "http://localhost:8545")
-    const network = await web3.eth.net.getNetworkType()
-    console.log(network)
-    console.log('dsbdfb')
+    const networkType = await web3.eth.net.getNetworkType()
+    const accounts = await web3.eth.getAccounts()
+    const networkID = await web3.eth.net.getId()
+
+    // get the abi
+    const abi = Vote.abi
+
+    // get the networks the contract is connected to
+    const networks = Vote.networks
+
+    //  get the contract address on the network
+    console.log(networks[networkID].address)
+    const contractAddress = networks[networkID].address
+
+    // instantiate the contract
+    const contract = new web3.eth.Contract(abi, contractAddress)
+    console.log(contract)
+
+    const owner = await contract.methods.candidates("0x292072a24aa02b6b0248C9191d46175E11C86270").call()
+    console.log(owner)
     
     
 }
