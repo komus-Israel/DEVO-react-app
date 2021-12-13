@@ -1,4 +1,3 @@
-import react from "react";
 import '../styling/nav.css';
 
 
@@ -8,9 +7,9 @@ const Nav =()=>{
         <nav className='navbar'>
             <h1>DEVO</h1>
             <div className='header-options'>
-                    <a>Vote</a>
-                    <a>Register</a>
-                    <a>Stat</a>
+                    <a href="#can">Vote</a>
+                    <a href="#reg">Register</a>
+                    <a href="/">Stat</a>
             </div>
         </nav>
     )

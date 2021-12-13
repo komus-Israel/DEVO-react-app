@@ -39,6 +39,11 @@
     margin-right: 10px;
 }
 
+.header-options a {
+    color: white;
+    text-decoration: none;
+}
+
 @media only screen and (max-width:560px){
     .navbar .header-options {
         font-size: 12px;

@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
 //import { connectEthereumWallet, disconnectEthereumWallet } from "../functions/functions"
 import { checkEthereum } from "../functions/functions"
@@ -38,6 +37,7 @@ const WelcomeMsg=()=>{
             ethereum.request.disconnect()
         }*/
         console.log("disconnected")
+        console.log(ethereum)
     
     }
 

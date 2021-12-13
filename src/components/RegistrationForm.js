@@ -2,7 +2,7 @@ import '../styling/registrationform.css';
 
 const RegistrationForm=()=>{
     return (
-        <form className="registration-form">
+        <form className="registration-form" id="reg">
             <div className = "input-cont">
                 <input placeholder='First name'/>
                 <input placeholder='Last name'/>

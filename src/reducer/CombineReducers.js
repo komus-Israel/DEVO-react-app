@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import connectWalletReducer from "./connectWalletReducer";
+//import connectWalletReducer from "./connectWalletReducer";
 import hasWalletReducer from "./hasWalletReducer";
 import addressReducer from "./addressReducer";
 
