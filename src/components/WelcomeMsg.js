@@ -14,9 +14,6 @@ const WelcomeMsg=()=>{
     const dispatch = useDispatch()
 
 
-
-    const [name, setName] = useState('bisola')
-
     const isInstalled = useSelector(
         state => state.hasWalletReducer
     )
@@ -54,16 +51,11 @@ const WelcomeMsg=()=>{
 
                 !isInstalled ? <button className="connect-wallet">Install MetaMask</button> :
 
-                (connectedAddress.length > 0) && <button className="connect-wallet" onClick={disconnectEthereumWallet}>disconnect wallet</button>
+                (connectedAddress.length > 0) && <button className="connect-wallet" onClick={disconnectEthereumWallet}>Vote</button>
 
                 
             }
 
-            {
-                name === 'bisola' ? <p style={{color:'white'}} onClick={()=>setName('tunde')}>bisola</p> :
-
-                <p style={{color:'white'}} onClick={()=>setName('bisola')}>tunder</p>
-            }
 
             
         </div>

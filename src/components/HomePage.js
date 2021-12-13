@@ -4,10 +4,11 @@ import WelcomeMsg from "./WelcomeMsg";
 import RegistrationForm from "./RegistrationForm";
 import Candidate from './Candidate';
 import Instructions from './Instructions';
-import { checkEthereum, checkWalletConnection, connectEthereumWallet } from '../functions/functions';
+import { checkEthereum, checkWalletConnection } from '../functions/functions';
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { installedWallet, address, connectWallet, disconnectWallet } from '../actions';
+import { useDispatch } from 'react-redux';
+import { installedWallet, address } from '../actions';
+import Web3 from 'web3';
 
 
 
@@ -42,6 +43,9 @@ const DevoHomePage=()=>{
         }
 
         handleWalletInstallation()
+
+        const web3 = new Web3(Web3.givenProvider || "http://localhost:8545")
+        console.log(web3)
        
         
     }, [])
