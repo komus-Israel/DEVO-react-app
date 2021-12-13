@@ -1,3 +1,8 @@
+import { useDispatch } from "react-redux";
+
+
+
+
 export const checkWalletConnection=async ()=>{
     
     const ethereum = checkEthereum()
@@ -55,6 +60,7 @@ export const connectEthereumWallet= async ()=>{
 
     if (ethereum) {
         const connectAccount = await ethereum.request({method: 'eth_requestAccounts'})
+        
         return connectAccount
     }
 }
