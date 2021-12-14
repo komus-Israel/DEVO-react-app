@@ -1,9 +1,9 @@
 import '../styling/homepage.css';
-import Nav from "./Header";
-import WelcomeMsg from "./WelcomeMsg";
-import RegistrationForm from "./RegistrationForm";
-import Candidate from './Candidate';
-import Instructions from './Instructions';
+import Nav from "../components/Header";
+import WelcomeMsg from "../components/WelcomeMsg";
+import RegistrationForm from "../components/RegistrationForm";
+import Candidate from '../components/Candidate';
+import Instructions from '../components/Instructions';
 import { checkEthereum, checkWalletConnection, loadBlockchainData } from '../functions/functions';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';

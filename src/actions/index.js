@@ -24,3 +24,10 @@ export const address=(data)=>{
         payload:data
     })
 }
+
+export const candidates=(data)=>{
+    return({
+        type:"REGISTERED-CANDIDATES",
+        payload:data
+    })
+}
