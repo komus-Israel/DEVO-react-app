@@ -21,7 +21,7 @@ const CandidateRegistration=()=>{
 
                 <div className="image-upload">
                     <label for="file"><div className="frame"><p>Candidate Image</p></div></label>   
-                    <input type="file" className="candidate-img-upload" name="file" id="file" onChange={(e)=>setImage(e.target.file)}/>
+                    <input type="file" className="candidate-img-upload" name="file" id="file" onChange={(e)=>setImage(e.target.files[0])}/>
                 </div>
                 
                 
