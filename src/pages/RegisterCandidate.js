@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
-import Candidate from "../components/Candidate";
 import CandidateRegistration from "../components/candidateRegistration";
 import '../styling/register.css';
 

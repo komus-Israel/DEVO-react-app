@@ -149,19 +149,10 @@ export const loadDeployerAddress=async (dispatch, loadContract)=>{
     
 }
 
-export const handleImageSelection=(imageFile)=>{
-    console.log(imageFile)
-    const reader = new FileReader()
-    reader.readAsDataURL(imageFile)
-    //const formData = new FormData()
-    //formData.append('file',imageFile)
-    //const img = formData.toDataURL('image/png')
-    
-    var promise = getBase64(imageFile);
-        promise.then(function(result) {
-            console.log(result);
-});
+export const handleImageSelection= async (file, setBase64)=>{
 
+    var base64String =  await getBase64(file);
+    setBase64(base64String)
 }
 
 export const getBase64=(file) => {

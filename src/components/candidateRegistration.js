@@ -1,11 +1,22 @@
-import { useState } from "react"
-import { handleImageSelection } from "../functions/functions"
+import React from "react"
+import { useEffect, useState } from "react"
+import { handleImageSelection, getBase64 } from "../functions/functions";
+import ImageUploading from 'react-images-uploading';
 
 
 
 const CandidateRegistration=()=>{
 
-    const [image, setImage] = useState()
+    
+
+    const [images, setImages] = React.useState([]);
+    const maxNumber = 1;
+  
+    const onChange = (imageList, addUpdateIndex) => {
+      // data for submit
+      setImages(imageList);
+    };
+     
     return(
 
         <div className='candidate-registration-form'>
@@ -15,13 +26,40 @@ const CandidateRegistration=()=>{
                     <input placeholder='candidate address' className='candidate-address'/>
                     <input placeholder='candidate name' className='candidate-name'/>
                     <div>
-                        <button className="register-candidate-btn" onClick={()=>handleImageSelection(image)}>register</button>
+                        <button className="register-candidate-btn">register</button>
                     </div>
                 </div>
 
-                <div className="image-upload">
-                    <label htmlFor="file"><div className="frame"><p>Candidate Image</p></div></label>   
-                    <input type="file" className="candidate-img-upload" name="file" id="file" onChange={(e)=>setImage(e.target.files[0])}/>
+                <div className="image-upload">                        
+                        <ImageUploading
+
+                       
+                                value={images}
+                                onChange={onChange}
+                                maxNumber={maxNumber}
+                                dataURLKey="data_url"
+                                >
+                                {({
+                                    imageList,
+                                    onImageUpload,
+                                    onImageUpdate,
+                                   
+                                }) => (
+                                    // write your building UI
+                                    <div className="frame" onClick={onImageUpdate}>
+
+                                        {
+                                            imageList.length > 0 && <img src={imageList[0].data_url} alt="" width="100" />
+                                            
+                                        }
+
+                                        
+                                       
+                                    </div>
+                                )}
+                                </ImageUploading>  
+                    
+                    
                 </div>
                 
                 
