@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Switch, BrowserRouter } from 'react-rou
 import RegisterCandidate from './pages/RegisterCandidate';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { checkEthereum, checkWalletConnection, loadBlockchainData, loadWeb3, loadDeployerAddress, loadContract } from './functions/functions';
+import { checkEthereum, checkWalletConnection, loadBlockchainData, loadWeb3, loadDeployerAddress, loadContract, userWeb3Address } from './functions/functions';
 import { installedWallet, address } from './actions';
 import { Redirect } from 'react-router';
 
@@ -34,14 +34,11 @@ function App() {
   )
 
 
-  
-
   useEffect(()=>{
 
     
     const checkEth = checkEthereum()
     checkEth && dispatch(installedWallet())
-
 
     //  dispatch the deployer address
     
@@ -55,9 +52,11 @@ function App() {
 
           //  check connected adddresses and dispatch it
 
-          const checkConnection = await checkWalletConnection()
+          const checkConnection = await checkWalletConnection(isWeb3)
       
+          //checkConnection && userWeb3Address(dispatch, isWeb3)
           checkConnection && dispatch(address(checkConnection.data))
+         
 
               }
         }
@@ -67,7 +66,7 @@ function App() {
     
 
     loadBlockchainData()
-  }, [contract, dispatch])
+  }, [dispatch])
 
   return (
 
@@ -82,13 +81,14 @@ function App() {
                   render={
 
                     ()=>{
-                      if(userAddress !== deployerAddress){
+                      if(localStorage.getItem('deployer') === localStorage.getItem('user')){
 
-                        return <Redirect to="/"/>
+                        
+                        return <RegisterCandidate />
 
                      } else {
 
-                       return <RegisterCandidate />
+                      return <Redirect to="/"/>
 
                      }
 

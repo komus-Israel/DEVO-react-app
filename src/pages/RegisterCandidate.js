@@ -1,5 +1,9 @@
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
+import Candidate from "../components/Candidate";
+import CandidateRegistration from "../components/candidateRegistration";
+import '../styling/register.css';
+
 
 
 
@@ -9,12 +13,6 @@ const RegisterCandidate=(state)=>{
     const isInstalled = useSelector(
         state => state.hasWalletReducer
     )
-
-
-    
-
-
-
 
     useEffect(()=>{
         
@@ -26,7 +24,14 @@ const RegisterCandidate=(state)=>{
 
     return (
         <div className="homepage-container">
-            <p>Register candidate</p>
+            <div className="sub-register-cont">
+                <h2 className="register-header">Register candidate</h2>
+                <CandidateRegistration />
+            </div>
+
+           
+            
+            
         </div>
     )
 }

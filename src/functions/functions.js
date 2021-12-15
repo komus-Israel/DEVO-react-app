@@ -3,7 +3,7 @@ import Vote from '../abi/Vote.json';
 import { address, deployer } from "../actions";
 
 
-export const checkWalletConnection=async ()=>{
+export const checkWalletConnection=async (web3)=>{
     
     const ethereum = checkEthereum()
     let accounts
@@ -11,9 +11,11 @@ export const checkWalletConnection=async ()=>{
     if (ethereum) {
      
         //  check if there are any connected accounts
-        accounts = await ethereum.request({method: 'eth_accounts'});
+        //accounts = await ethereum.request({method: 'eth_accounts'});
+        accounts = await web3.eth.getAccounts()
         
         if (accounts.length > 0) {
+            localStorage.setItem('user', accounts[0])
             return {
                 state: true,
                 data: accounts
@@ -141,7 +143,17 @@ export const loadDeployerAddress=async (dispatch, loadContract)=>{
     
     const contract = await loadContract
     const deployerAddress = await contract.methods.owner().call()
+    localStorage.setItem('deployer', deployerAddress)
     
     dispatch(deployer(deployerAddress))
     
+}
+
+export const userWeb3Address=async(dispatch, web3)=>{
+
+    const accounts = await web3.eth.getAccounts()
+    dispatch(address(accounts[0]))
+    localStorage.setItem('user', accounts[0])
+    return accounts[0]
+
 }

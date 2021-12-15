@@ -1,4 +1,4 @@
-import SVG from "./SVG";
+import { SVG1 } from "./SVG";
 
 const Instructions=()=>{
 
@@ -35,7 +35,7 @@ const Instructions=()=>{
                 </div>
 
                 <div className='svg'>
-                    <SVG />
+                    <SVG1 />
                 </div>
 
                 {

@@ -1,0 +1,107 @@
+.sub-register-cont {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-image: linear-gradient(45deg,   rgb(175, 66, 97), rgb(72, 161, 221, .3));
+    padding: 2em;
+    width: 50%;
+    border-radius: 12px;
+    box-shadow: 6px 15px 25px rgba(0, 0, 0, 0.563);
+}
+
+
+
+.candidate-registration-formdiv {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 3em;
+}
+
+.register-header {
+    color: rgba(0, 0, 0 , .6);
+    font-size: 2em;
+}
+
+.inputs input {
+
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    padding: 12px;
+    box-shadow: 6px 15px 25px rgba(0, 0, 0, 0.563);
+    margin-bottom: 12px;
+
+
+
+}
+
+.inputs {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+   
+}
+
+.register-candidate-btn {
+    position: relative;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(45deg, #f3ec78, rgb(72, 161, 221, .3));
+    padding: 12px;
+    width: 200px;
+    box-shadow: 6px 15px 25px rgba(0, 0, 0, 0.563);
+    margin-top: 50%;
+}
+
+.candidate-img-upload {
+    display: none;
+}
+
+.frame {
+    height: 200px;
+    border: 5px solid #f3ec78;
+    display: flex;
+    align-items: center;
+    color: white;
+    padding: 1em;
+    border-radius: 12px;
+}
+
+@media only screen and (max-width:560px){
+
+    .candidate-registration-formdiv {
+        flex-direction: column-reverse;
+    }
+
+    .sub-register-cont {
+        width: auto;
+        padding-left: 3em;
+        padding-right: 3em;
+    }
+
+    .frame {
+        width: 50%;
+        margin-left: auto;
+    }
+
+    .inputs {
+        margin-top: 20px;
+        height: auto;
+    }
+
+    .inputs input {
+        margin-bottom: 12px;
+    }
+
+    .register-candidate-btn {
+        margin-top: 0;
+    }
+
+    .register-header {
+        font-size: 1.5em;
+    }
+
+
+}
+

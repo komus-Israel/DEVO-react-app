@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux"
 import { connectEthereumWallet, disconnectEthereumWallet } from "../functions/functions"
 import { useDispatch } from "react-redux";
+import { useEffect } from "react";
 
 
 
@@ -19,6 +20,10 @@ const WelcomeMsg=()=>{
     const connectedAddress = useSelector(
         state => state.addressReducer
     )
+
+    useEffect(()=>{
+        console.log(connectedAddress)
+    })
 
    
 
