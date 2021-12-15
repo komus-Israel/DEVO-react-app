@@ -151,5 +151,26 @@ export const loadDeployerAddress=async (dispatch, loadContract)=>{
 
 export const handleImageSelection=(imageFile)=>{
     console.log(imageFile)
+    const reader = new FileReader()
+    reader.readAsDataURL(imageFile)
+    //const formData = new FormData()
+    //formData.append('file',imageFile)
+    //const img = formData.toDataURL('image/png')
+    
+    var promise = getBase64(imageFile);
+        promise.then(function(result) {
+            console.log(result);
+});
+
 }
+
+export const getBase64=(file) => {
+    return new Promise(function(resolve, reject) {
+        var reader = new FileReader();
+        reader.onload = function() { resolve(reader.result); };
+        reader.onerror = reject; 
+        reader.readAsDataURL(file);
+    });
+}
+
 
