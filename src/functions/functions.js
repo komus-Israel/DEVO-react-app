@@ -149,11 +149,3 @@ export const loadDeployerAddress=async (dispatch, loadContract)=>{
     
 }
 
-export const userWeb3Address=async(dispatch, web3)=>{
-
-    const accounts = await web3.eth.getAccounts()
-    dispatch(address(accounts[0]))
-    localStorage.setItem('user', accounts[0])
-    return accounts[0]
-
-}

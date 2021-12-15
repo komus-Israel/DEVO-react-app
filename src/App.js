@@ -25,15 +25,6 @@ function App() {
   const contract = loadContract(isWeb3)
 
 
-  const userAddress = useSelector(
-    state => state.addressReducer
-  )
-
-  const deployerAddress = useSelector(
-        state => state.deployerReducer
-  )
-
-
   useEffect(()=>{
 
     
@@ -54,7 +45,6 @@ function App() {
 
           const checkConnection = await checkWalletConnection(isWeb3)
       
-          //checkConnection && userWeb3Address(dispatch, isWeb3)
           checkConnection && dispatch(address(checkConnection.data))
          
 
