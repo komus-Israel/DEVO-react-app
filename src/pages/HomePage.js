@@ -4,20 +4,11 @@ import WelcomeMsg from "../components/WelcomeMsg";
 import RegistrationForm from "../components/RegistrationForm";
 import Candidate from '../components/Candidate';
 import Instructions from '../components/Instructions';
-import { checkEthereum, checkWalletConnection, loadBlockchainData } from '../functions/functions';
-import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { installedWallet, address } from '../actions';
-
-
-
 
 
 const DevoHomePage=()=>{
 
-    const dispatch = useDispatch()
-
-
+    
 
     const candidates = [
 
@@ -25,30 +16,6 @@ const DevoHomePage=()=>{
         {name:"komus", img: "./images/komus.jfif", party:"zion"},
 
     ]
-
-    useEffect(()=>{
-
-        const handleWalletInstallation= async ()=>{
-                const checkEth = checkEthereum()
-                checkEth && dispatch(installedWallet())
-                
-                if (checkEth) {
-
-                    //  check connected adddresses
-
-                    const checkConnection = await checkWalletConnection()
-                
-                    checkConnection && dispatch(address(checkConnection.data))
-
-                }
-        }
-
-        handleWalletInstallation()
-
-        loadBlockchainData()
-       
-        
-    }, [dispatch])
   
     return(
         <div className="homepage-container">
@@ -84,5 +51,6 @@ const DevoHomePage=()=>{
         </div>     
     )
 }
+
 
 export default DevoHomePage

@@ -97,8 +97,10 @@ export const loadBlockchainData=async ()=>{
     const contract = new web3.eth.Contract(abi, contractAddress)
     console.log(contract)
 
-    const owner = await contract.methods.candidates("0x292072a24aa02b6b0248C9191d46175E11C86270").call()
-    console.log(owner)
+    //const owner = await contract.methods.candidates("0x292072a24aa02b6b0248C9191d46175E11C86270").call()
+    //console.log(owner)
+
+    console.log(abi)
     
     
 }
