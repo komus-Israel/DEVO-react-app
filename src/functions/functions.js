@@ -1,6 +1,8 @@
 import Web3 from "web3";
 import Vote from '../abi/Vote.json';
-import { address } from "../actions";
+import { address, deployer } from "../actions";
+import deployerReducer from "../reducer/deployerReducer";
+
 
 
 
@@ -77,8 +79,12 @@ export const disconnectEthereumWallet= async ()=>{
 
 }
 
-export const loadBlockchainData=async ()=>{
+export const loadBlockchainData=async (dispatch)=>{
     const web3 = new Web3(Web3.givenProvider || "http://localhost:8545")
+
+    //dispatch(web3Connection(web3))
+
+
     const networkType = await web3.eth.net.getNetworkType()
     const accounts = await web3.eth.getAccounts()
     const networkID = await web3.eth.net.getId()
@@ -90,11 +96,11 @@ export const loadBlockchainData=async ()=>{
     const networks = Vote.networks
 
     //  get the contract address on the network
-    console.log(networks[networkID].address)
-    const contractAddress = networks[networkID].address
+    //console.log(networks[networkID].address)
+   // const contractAddress = networks[networkID].address
 
     // instantiate the contract
-    const contract = new web3.eth.Contract(abi, contractAddress)
+    //const contract = new web3.eth.Contract(abi, contractAddress)
     
 
     //const owner = await contract.methods.candidates("0x292072a24aa02b6b0248C9191d46175E11C86270").call()
@@ -105,7 +111,43 @@ export const loadBlockchainData=async ()=>{
 }
 
 
-export const loadWeb3=async()=>{
+export const loadWeb3=()=>{
     const web3 = new Web3(Web3.givenProvider || "http://localhost:8545")
     return web3
+
+}
+
+
+export const loadContract= async(web3)=>{
+
+        //  get the abi and the contract address
+
+        //  get the network ID
+        const networkID = await web3.eth.net.getId()
+        
+
+        //  get the network
+        const networks = Vote.networks
+
+        // get the abi
+        const abi = Vote.abi
+
+        //  use the network ID to get the contract address
+        const contractAddress = networks[networkID].address
+
+
+        const contract = new web3.eth.Contract(abi, contractAddress)
+
+        return contract
+    
+}
+
+
+export const loadDeployerAddress=async (dispatch, loadContract)=>{
+    
+    const contract = await loadContract
+    const deployerAddress = await contract.methods.owner().call()
+    
+    dispatch(deployer(deployerAddress))
+    
 }

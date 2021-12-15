@@ -38,3 +38,10 @@ export const web3Connection=(web3)=>{
         payload:web3
     })
 }
+
+export const deployer=(address)=>{
+    return({
+        type:"DEPLOYER",
+        payload:address
+    })
+}

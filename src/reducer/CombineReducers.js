@@ -4,6 +4,7 @@ import hasWalletReducer from "./hasWalletReducer";
 import addressReducer from "./addressReducer";
 import candidateReducer from "./candidatesReducer";
 import web3Reducer from "./web3Reducer";
+import deployerReducer from "./deployerReducer";
 
 const allReducers = combineReducers(
     {
@@ -11,7 +12,7 @@ const allReducers = combineReducers(
         hasWalletReducer,
         addressReducer,
         candidateReducer,
-        web3Reducer
+        deployerReducer
     }
 )
 

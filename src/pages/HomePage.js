@@ -6,6 +6,7 @@ import Candidate from '../components/Candidate';
 import Instructions from '../components/Instructions';
 
 
+
 const DevoHomePage=()=>{
 
     
