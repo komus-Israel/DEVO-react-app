@@ -149,7 +149,7 @@ export const loadDeployerAddress=async (dispatch, loadContract)=>{
     
 }
 
-export const handleImageSelection=(imageName)=>{
-    return
+export const handleImageSelection=(imageFile)=>{
+    console.log(imageFile)
 }
 

@@ -15,12 +15,12 @@ const CandidateRegistration=()=>{
                     <input placeholder='candidate address' className='candidate-address'/>
                     <input placeholder='candidate name' className='candidate-name'/>
                     <div>
-                        <button className="register-candidate-btn" onClick={()=>console.log(image)}>register</button>
+                        <button className="register-candidate-btn" onClick={()=>handleImageSelection(image)}>register</button>
                     </div>
                 </div>
 
                 <div className="image-upload">
-                    <label for="file"><div className="frame"><p>Candidate Image</p></div></label>   
+                    <label htmlFor="file"><div className="frame"><p>Candidate Image</p></div></label>   
                     <input type="file" className="candidate-img-upload" name="file" id="file" onChange={(e)=>setImage(e.target.files[0])}/>
                 </div>
                 
