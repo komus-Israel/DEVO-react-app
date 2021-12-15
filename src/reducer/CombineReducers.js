@@ -3,7 +3,6 @@ import { combineReducers } from "redux";
 import hasWalletReducer from "./hasWalletReducer";
 import addressReducer from "./addressReducer";
 import candidateReducer from "./candidatesReducer";
-import web3Reducer from "./web3Reducer";
 import deployerReducer from "./deployerReducer";
 
 const allReducers = combineReducers(

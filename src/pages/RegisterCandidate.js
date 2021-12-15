@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 
 
 
+
 const RegisterCandidate=(state)=>{
 
     const isInstalled = useSelector(
@@ -10,8 +11,17 @@ const RegisterCandidate=(state)=>{
     )
 
 
+    
+
+
+
+
     useEffect(()=>{
+        
         console.log(isInstalled)
+
+        
+
     })
 
     return (

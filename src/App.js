@@ -3,9 +3,10 @@ import DevoHomePage from './pages/HomePage';
 import { BrowserRouter as Router, Route, Switch, BrowserRouter } from 'react-router-dom';
 import RegisterCandidate from './pages/RegisterCandidate';
 import { useEffect } from 'react';
-import { useDispatch,  } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { checkEthereum, checkWalletConnection, loadBlockchainData, loadWeb3, loadDeployerAddress, loadContract } from './functions/functions';
 import { installedWallet, address } from './actions';
+import { Redirect } from 'react-router';
 
 
 
@@ -22,6 +23,15 @@ function App() {
   // load contract
 
   const contract = loadContract(isWeb3)
+
+
+  const userAddress = useSelector(
+    state => state.addressReducer
+  )
+
+  const deployerAddress = useSelector(
+        state => state.deployerReducer
+  )
 
 
   
@@ -68,7 +78,28 @@ function App() {
               <Switch>
                   <Route exact path='/' component={DevoHomePage} />
 
-                  <Route path='/candidate-register' component={RegisterCandidate} />
+                  <Route path='/candidate-register' 
+                  render={
+
+                    ()=>{
+                      if(userAddress !== deployerAddress){
+
+                        return <Redirect to="/"/>
+
+                     } else {
+
+                       return <RegisterCandidate />
+
+                     }
+
+                    }
+                    
+                  }
+                  
+                  
+                  
+                  
+                  />
               </Switch>
              
             </div>

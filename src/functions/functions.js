@@ -1,10 +1,6 @@
 import Web3 from "web3";
 import Vote from '../abi/Vote.json';
 import { address, deployer } from "../actions";
-import deployerReducer from "../reducer/deployerReducer";
-
-
-
 
 
 export const checkWalletConnection=async ()=>{
@@ -105,8 +101,6 @@ export const loadBlockchainData=async (dispatch)=>{
 
     //const owner = await contract.methods.candidates("0x292072a24aa02b6b0248C9191d46175E11C86270").call()
     //console.log(owner)
-
-    console.log(web3)
   
 }
 
