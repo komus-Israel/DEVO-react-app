@@ -31,3 +31,10 @@ export const candidates=(data)=>{
         payload:data
     })
 }
+
+export const web3Connection=(web3)=>{
+    return({
+        type:"WEB3",
+        payload:web3
+    })
+}

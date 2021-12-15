@@ -95,12 +95,17 @@ export const loadBlockchainData=async ()=>{
 
     // instantiate the contract
     const contract = new web3.eth.Contract(abi, contractAddress)
-    console.log(contract)
+    
 
     //const owner = await contract.methods.candidates("0x292072a24aa02b6b0248C9191d46175E11C86270").call()
     //console.log(owner)
 
-    console.log(abi)
-    
-    
+    console.log(web3)
+  
+}
+
+
+export const loadWeb3=async()=>{
+    const web3 = new Web3(Web3.givenProvider || "http://localhost:8545")
+    return web3
 }

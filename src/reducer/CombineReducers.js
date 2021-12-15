@@ -3,13 +3,15 @@ import { combineReducers } from "redux";
 import hasWalletReducer from "./hasWalletReducer";
 import addressReducer from "./addressReducer";
 import candidateReducer from "./candidatesReducer";
+import web3Reducer from "./web3Reducer";
 
 const allReducers = combineReducers(
     {
         //connectWalletReducer,
         hasWalletReducer,
         addressReducer,
-        candidateReducer
+        candidateReducer,
+        web3Reducer
     }
 )
 

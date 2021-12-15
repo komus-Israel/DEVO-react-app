@@ -4,8 +4,8 @@ import { BrowserRouter as Router, Route, Switch, BrowserRouter } from 'react-rou
 import RegisterCandidate from './pages/RegisterCandidate';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { checkEthereum, checkWalletConnection, loadBlockchainData } from './functions/functions';
-import { installedWallet, address } from './actions';
+import { checkEthereum, checkWalletConnection, loadBlockchainData, loadWeb3 } from './functions/functions';
+import { installedWallet, address, web3Connection } from './actions';
 
 
 function App() {
@@ -17,6 +17,7 @@ function App() {
     
     const checkEth = checkEthereum()
     checkEth && dispatch(installedWallet())
+    loadWeb3() && dispatch(web3Connection(loadWeb3()))
 
     const handleWalletInstallation= async ()=>{
     const checkEth = checkEthereum()
@@ -33,6 +34,8 @@ function App() {
         }
 
     handleWalletInstallation()
+
+    
 
     loadBlockchainData()
   }, [dispatch])
