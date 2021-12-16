@@ -13,6 +13,9 @@ const CandidateRegistration=()=>{
 
     const [images, setImages] =useState([])
     const [imageFile, setFile] = useState()
+    const [ipfsHash, setIPFSHash] = useState('')
+    const [candidateName, setCandidateName] = useState('')
+    const [candidateAddress, setCandidateAddress] = useState('')
   
     const onChange = (imageList, addUpdateIndex) => {
       // data for submit
@@ -26,10 +29,23 @@ const CandidateRegistration=()=>{
             <div className='candidate-registration-formdiv'>
 
                 <div className="inputs">
-                    <input placeholder='candidate address' className='candidate-address'/>
-                    <input placeholder='candidate name' className='candidate-name'/>
+                    <input placeholder='candidate address' className='candidate-address' value={candidateAddress} onChange={(e)=>setCandidateAddress(e.target.value)}/>
+                    <input placeholder='candidate name' className='candidate-name' value={candidateName} onChange={(e)=>setCandidateName(e.target.value)}/>
                     <div>
-                        <button className="register-candidate-btn" /*onClick={()=>console.log(images[0].file)}*/ onClick={()=>uploadToPinata(images[0].file)}>register</button>
+
+                        {
+                            (images.length > 0 && candidateName.length > 0 && candidateAddress.length > 0) ? (
+                                                                                                <button className="register-candidate-btn" /*onClick={()=>console.log(images[0].file)}*/ onClick={async()=>{
+                                                                                                                        const hash = await uploadToPinata(images[0].file)
+                                                                                                                        setIPFSHash(hash)
+                                                                                                                }}>register
+                                                                                                </button>
+                                                                                            ) 
+                            :
+
+                            <button disabled className="register-candidate-btn">register</button>
+                        }
+                        
                     </div>
                 </div>
 
