@@ -2,7 +2,6 @@ import Web3 from "web3";
 import Vote from '../abi/Vote.json';
 import { address, deployer } from "../actions";
 import axios from "axios";
-import { createReadStream } from "fs";
 import FormData from "form-data";
 require("dotenv").config()
 
