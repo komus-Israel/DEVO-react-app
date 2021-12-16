@@ -162,18 +162,11 @@ export const uploadToPinata=async(file)=>{
     const url = `https://api.pinata.cloud/pinning/pinFileToIPFS`
     let data = new FormData()
 
+     const API_KEY = process.env.REACT_APP_API_KEY
+     const API_SECRET = process.env.REACT_APP_API_SECRET
     
 
-     
-
-     const key = process.env.REACT_APP_API_KEY
-
-
-
-    console.log(key)
-    
-
-    /*data.append("file", file)
+    data.append("file", file)
 
     const res = await axios.post(
         url,
@@ -189,7 +182,7 @@ export const uploadToPinata=async(file)=>{
         }
     )
 
-    console.log(res.data)*/
+    return(res.data)
 }
 
 

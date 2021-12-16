@@ -2,7 +2,7 @@ import React from "react"
 import { useEffect, useState } from "react"
 import { uploadToPinata } from "../functions/functions";
 import ImageUploading from 'react-images-uploading';
-require("dotenv").config()
+
 
 
 
@@ -19,13 +19,7 @@ const CandidateRegistration=()=>{
       setImages(imageList);
     };
 
-    useEffect(()=>{
-        const key = process.env.REACT_APP_API_SECRET
-
-
-        console.log(key)
-    })
-     
+   
     return(
 
         <div className='candidate-registration-form'>
