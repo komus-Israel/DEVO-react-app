@@ -1,6 +1,12 @@
 import Web3 from "web3";
 import Vote from '../abi/Vote.json';
 import { address, deployer } from "../actions";
+import axios from "axios";
+import { createReadStream } from "fs";
+import FormData from "form-data";
+require("dotenv").config()
+
+
 
 
 export const checkWalletConnection=async (web3)=>{
@@ -149,19 +155,43 @@ export const loadDeployerAddress=async (dispatch, loadContract)=>{
     
 }
 
-export const handleImageSelection= async (file, setBase64)=>{
 
-    var base64String =  await getBase64(file);
-    setBase64(base64String)
+
+
+export const uploadToPinata=async(file)=>{
+    const url = `https://api.pinata.cloud/pinning/pinFileToIPFS`
+    let data = new FormData()
+
+    
+
+     
+
+     const key = process.env.REACT_APP_API_KEY
+
+
+
+    console.log(key)
+    
+
+    /*data.append("file", file)
+
+    const res = await axios.post(
+        url,
+        data,
+        {
+            maxContentLength: "Infinity",
+            headers: {
+                "Content-Type": `multipart/form-data;boundary=${data._boundary}`, 
+                'pinata_api_key': API_KEY,
+                'pinata_secret_api_key': API_SECRET
+
+            }
+        }
+    )
+
+    console.log(res.data)*/
 }
 
-export const getBase64=(file) => {
-    return new Promise(function(resolve, reject) {
-        var reader = new FileReader();
-        reader.onload = function() { resolve(reader.result); };
-        reader.onerror = reject; 
-        reader.readAsDataURL(file);
-    });
-}
+
 
 

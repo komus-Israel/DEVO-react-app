@@ -1,7 +1,9 @@
 import React from "react"
 import { useEffect, useState } from "react"
-import { handleImageSelection, getBase64 } from "../functions/functions";
+import { uploadToPinata } from "../functions/functions";
 import ImageUploading from 'react-images-uploading';
+require("dotenv").config()
+
 
 
 
@@ -9,13 +11,20 @@ const CandidateRegistration=()=>{
 
     
 
-    const [images, setImages] = React.useState([]);
-    const maxNumber = 1;
+    const [images, setImages] =useState([])
+    const [imageFile, setFile] = useState()
   
     const onChange = (imageList, addUpdateIndex) => {
       // data for submit
       setImages(imageList);
     };
+
+    useEffect(()=>{
+        const key = process.env.REACT_APP_API_SECRET
+
+
+        console.log(key)
+    })
      
     return(
 
@@ -26,7 +35,7 @@ const CandidateRegistration=()=>{
                     <input placeholder='candidate address' className='candidate-address'/>
                     <input placeholder='candidate name' className='candidate-name'/>
                     <div>
-                        <button className="register-candidate-btn">register</button>
+                        <button className="register-candidate-btn" /*onClick={()=>console.log(images[0].file)}*/ onClick={()=>uploadToPinata(images[0].file)}>register</button>
                     </div>
                 </div>
 
@@ -36,7 +45,7 @@ const CandidateRegistration=()=>{
                        
                                 value={images}
                                 onChange={onChange}
-                                maxNumber={maxNumber}
+                                maxNumber={1}
                                 dataURLKey="data_url"
                                 >
                                 {({
@@ -49,12 +58,11 @@ const CandidateRegistration=()=>{
                                     <div className="frame" onClick={onImageUpdate}>
 
                                         {
-                                            imageList.length > 0 && <img src={imageList[0].data_url} alt="" width="100" />
+                                            imageList.length > 0 ? <img src={imageList[0].data_url} alt="" /> : <p>candidate image</p>
+                                           
                                             
                                         }
-
-                                        
-                                       
+ 
                                     </div>
                                 )}
                                 </ImageUploading>  
