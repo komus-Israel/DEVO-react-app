@@ -7,6 +7,7 @@ import deployerReducer from "./deployerReducer";
 import registeringReducer from "./registeringReducer";
 import RegReducer from "./RegReducer";
 import voteReducer from "./voteReducer";
+import votingReducer from "./votingReducer";
 
 const allReducers = combineReducers(
     {
@@ -18,6 +19,7 @@ const allReducers = combineReducers(
         registeringReducer,
         RegReducer,
         voteReducer,
+        votingReducer
        
     }
 )

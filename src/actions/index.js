@@ -72,3 +72,17 @@ export const setVoteStatus=(status)=>{
         payload:status
     })
 }
+
+export const startVoting=(status)=>{
+    return({
+        type:"START-VOTING",
+        payload:status
+    })
+}
+
+export const endVoting=(status)=>{
+    return({
+        type:"END-VOTING",
+        payload:status
+    })
+}

@@ -14,7 +14,9 @@ const DevoHomePage=()=>{
 
     
 
-    const [voting, setVoting] = useState(false)
+    const voting = useSelector(
+        state => state.votingReducer
+    )
 
     const dispatch = useDispatch()
 
@@ -22,12 +24,9 @@ const DevoHomePage=()=>{
         state => state.candidateReducer
       )
 
-      const address = useSelector(
-          state => state.addressReducer
-      )
+      
 
       useEffect(()=>{
-        console.log(address)
         getVoteStatus(dispatch)
       })
 

@@ -1,6 +1,6 @@
 import Web3 from "web3";
 import Vote from '../abi/Vote.json';
-import { address, deployer, registering, notRegistering, RegResponse, candidates, setVoteStatus } from "../actions";
+import { address, deployer, registering, notRegistering, RegResponse, candidates, setVoteStatus, startVoting, endVoting } from "../actions";
 import axios from "axios";
 import FormData from "form-data";
 
@@ -135,10 +135,17 @@ export const loadRegisteredCandidates=async(dispatch)=>{
     dispatch(candidates(registeredCandidates))
 }
 
-export const vote=async(electorateAddress, candidateAddress)=>{
+export const vote=async(dispatch, electorateAddress, candidateAddress)=>{
+    dispatch(startVoting(true))
+    console.log(electorateAddress)
+    console.log(candidateAddress)
     const isWeb3 = loadWeb3()
     const contract = await loadContract(isWeb3)
     const vote = await contract.methods.voteCandidate(candidateAddress).send({from: electorateAddress})
+    if(vote.events.VoteCandidate) {
+        dispatch(setVoteStatus(true))
+    }
+    dispatch(endVoting(false))
 }
 
 export const getVoteStatus=async(dispatch)=>{
