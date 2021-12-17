@@ -21,9 +21,6 @@ const WelcomeMsg=()=>{
         state => state.addressReducer
     )
 
-    useEffect(()=>{
-        console.log(connectedAddress)
-    })
 
    
 

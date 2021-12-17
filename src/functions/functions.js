@@ -212,5 +212,23 @@ export const uploadToPinata=async(file, setIPFSHash, dispatch, name, address, ip
 }
 
 
+export const handleElectorateReg=async (e,firstName, middleName, lastName, nin, state, address)=>{
+    e.preventDefault()
+
+    const isWeb3 = loadWeb3()
+    const contract = await loadContract(isWeb3)
+
+    try {
+        contract.methods.registerCandidates(address, name, ipfsHash).send({from: deployer}).then(
+            //dispatch(candidateRegResponse('confirm the candidate registration in your metamask wallet'))
+            res=>console.log(res)
+        )
+    } catch(err) {
+        dispatch(candidateRegResponse('error while registering candidate'))
+    }
+
+    console.log(address)
+}
+
 
 
