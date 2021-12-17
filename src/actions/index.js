@@ -66,3 +66,9 @@ export const RegResponse=(response)=>{
     })
 }
 
+export const setVoteStatus=(status)=>{
+    return({
+        type:"VOTED",
+        payload:status
+    })
+}

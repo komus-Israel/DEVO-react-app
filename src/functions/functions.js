@@ -1,6 +1,6 @@
 import Web3 from "web3";
 import Vote from '../abi/Vote.json';
-import { address, deployer, registering, notRegistering, RegResponse, candidates } from "../actions";
+import { address, deployer, registering, notRegistering, RegResponse, candidates, setVoteStatus } from "../actions";
 import axios from "axios";
 import FormData from "form-data";
 
@@ -158,7 +158,23 @@ export const loadRegisteredCandidates=async(dispatch)=>{
     const isWeb3 = loadWeb3()
     const contract = await loadContract(isWeb3)
     const registeredCandidates = await contract.methods.getAllCandidates().call()
+    //console.log(registeredCandidates[0])
+    registeredCandidates.map(data=>console.log(data))
     dispatch(candidates(registeredCandidates))
+}
+
+export const vote=async(electorateAddress, candidateAddress)=>{
+    const isWeb3 = loadWeb3()
+    const contract = await loadContract(isWeb3)
+    const vote = await contract.methods.voteCandidate(candidateAddress).send({from: electorateAddress})
+}
+
+export const getVoteStatus=async(dispatch, electorateAddress)=>{
+    const isWeb3 = loadWeb3()
+    const contract = await loadContract(isWeb3)
+    const checkVoteStatus = await contract.methods.validateVote(electorateAddress).call()
+    checkVoteStatus && dispatch(setVoteStatus(checkVoteStatus))
+    console.log(checkVoteStatus)
 }
 
 

@@ -13,12 +13,12 @@ const DevoHomePage=()=>{
 
     
 
-    const candidates = [
+    /*const candidates = [
 
         {name:"Komolehin Israel", img: "./images/komus.jfif", voteCount:1000},
         {name:"komus Eddison", img: "./images/komus.jfif", voteCount:1},
 
-    ]
+    ]*/
 
     const allCandidates = useSelector(
         state => state.candidateReducer
@@ -48,7 +48,7 @@ const DevoHomePage=()=>{
 
                     <div className="candidate-list">
                         {
-                            candidates.map((candidate, index)=>{
+                            allCandidates.map((candidate, index)=>{
                                 return(
                                         <Candidate candidate={candidate} key={index}/>
                                 )

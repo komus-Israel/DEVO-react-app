@@ -4,7 +4,12 @@ import { BrowserRouter as Router, Route, Switch, BrowserRouter } from 'react-rou
 import RegisterCandidate from './pages/RegisterCandidate';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { checkEthereum, checkWalletConnection, loadBlockchainData, loadWeb3, loadDeployerAddress, loadContract, loadRegisteredCandidates } from './functions/functions';
+import {
+         checkEthereum, checkWalletConnection, 
+        loadBlockchainData, loadWeb3, loadDeployerAddress, 
+        loadContract, loadRegisteredCandidates, 
+        getVoteStatus} from './functions/functions';
+
 import { installedWallet, address } from './actions';
 import { Redirect } from 'react-router';
 import Stat from './pages/Stat';
@@ -24,6 +29,10 @@ function App() {
   // load contract
 
   const contract = loadContract(isWeb3)
+
+  const electorateAddress = useSelector(
+    state => state.addressReducer
+  )
 
 
   useEffect(()=>{
@@ -63,6 +72,7 @@ function App() {
     
 
     loadBlockchainData()
+    getVoteStatus(dispatch,electorateAddress[0])
   }, [dispatch])
 
   return (
