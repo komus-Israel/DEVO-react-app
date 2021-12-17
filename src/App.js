@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Switch, BrowserRouter } from 'react-rou
 import RegisterCandidate from './pages/RegisterCandidate';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { checkEthereum, checkWalletConnection, loadBlockchainData, loadWeb3, loadDeployerAddress, loadContract, userWeb3Address } from './functions/functions';
+import { checkEthereum, checkWalletConnection, loadBlockchainData, loadWeb3, loadDeployerAddress, loadContract, loadRegisteredCandidates } from './functions/functions';
 import { installedWallet, address } from './actions';
 import { Redirect } from 'react-router';
 import Stat from './pages/Stat';
@@ -28,6 +28,8 @@ function App() {
 
   useEffect(()=>{
 
+
+    
     
     const checkEth = checkEthereum()
     checkEth && dispatch(installedWallet())
@@ -36,9 +38,13 @@ function App() {
     
     loadDeployerAddress(dispatch, contract)
 
+
+    //  load the registered candidates
+    loadRegisteredCandidates(dispatch)
+
   
     const handleWalletInstallation= async ()=>{
-    const checkEth = checkEthereum()
+      const checkEth = checkEthereum()
       
       if (checkEth) {
 

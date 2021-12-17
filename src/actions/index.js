@@ -66,17 +66,3 @@ export const RegResponse=(response)=>{
     })
 }
 
-export const ipfsResponse=(hash)=>{
-    return({
-        type:"HASH-GOTTEN",
-        payload:hash
-    })
-}
-
-
-/*export const candidateFailedRegResponse=(response)=>{
-    return({
-        type:"FAILED-REGISTRATION",
-        payload:response
-    })
-}*/

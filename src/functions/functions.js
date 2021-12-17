@@ -1,6 +1,6 @@
 import Web3 from "web3";
 import Vote from '../abi/Vote.json';
-import { address, deployer, registering, notRegistering, RegResponse, ipfsResponse } from "../actions";
+import { address, deployer, registering, notRegistering, RegResponse, candidates } from "../actions";
 import axios from "axios";
 import FormData from "form-data";
 
@@ -154,6 +154,13 @@ export const loadDeployerAddress=async (dispatch, loadContract)=>{
     
 }
 
+export const loadRegisteredCandidates=async(dispatch)=>{
+    const isWeb3 = loadWeb3()
+    const contract = await loadContract(isWeb3)
+    const registeredCandidates = await contract.methods.getAllCandidates().call()
+    dispatch(candidates(registeredCandidates))
+}
+
 
 
 
@@ -213,13 +220,7 @@ export const uploadToPinata=async(file, dispatch, name, address, deployer, setCa
         dispatch(notRegistering())
     }
 
-    
-
-    
-
-    
-
-    
+ 
 
 }
 
