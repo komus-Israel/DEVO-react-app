@@ -5,7 +5,8 @@ import RegistrationForm from "../components/RegistrationForm";
 import Candidate from '../components/Candidate';
 import Instructions from '../components/Instructions';
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { getVoteStatus } from '../functions/functions';
 
 
 
@@ -13,11 +14,24 @@ const DevoHomePage=()=>{
 
     
 
-    const [voting, setVoting] = useState(true)
+    const [voting, setVoting] = useState(false)
+
+    const dispatch = useDispatch()
 
     const allCandidates = useSelector(
         state => state.candidateReducer
       )
+
+      const address = useSelector(
+          state => state.addressReducer
+      )
+
+      useEffect(()=>{
+        console.log(address)
+        getVoteStatus(dispatch)
+      })
+
+    
   
     return(
         <div className="homepage-container">

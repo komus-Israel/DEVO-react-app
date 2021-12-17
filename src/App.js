@@ -70,9 +70,6 @@ function App() {
     handleWalletInstallation()
 
     
-
-    loadBlockchainData()
-    getVoteStatus(dispatch,electorateAddress[0])
   }, [dispatch])
 
   return (

@@ -66,8 +66,10 @@ export const connectEthereumWallet= async (dispatch)=>{
     const ethereum = checkEthereum()
 
     if (ethereum) {
+        const web3 = loadWeb3()
         const connectAccount = await ethereum.request({method: 'eth_requestAccounts'})
-        dispatch(address(connectAccount))
+        const accountFromWeb3 = await web3.eth.getAccounts()
+        dispatch(address(accountFromWeb3))
         return connectAccount
     }
 }
@@ -80,35 +82,6 @@ export const disconnectEthereumWallet= async ()=>{
     console.log("disconnected")
     console.log(ethereum)
 
-}
-
-export const loadBlockchainData=async (dispatch)=>{
-    const web3 = new Web3(Web3.givenProvider || "http://localhost:8545")
-
-    //dispatch(web3Connection(web3))
-
-
-    const networkType = await web3.eth.net.getNetworkType()
-    const accounts = await web3.eth.getAccounts()
-    const networkID = await web3.eth.net.getId()
-
-    // get the abi
-    const abi = Vote.abi
-
-    // get the networks the contract is connected to
-    const networks = Vote.networks
-
-    //  get the contract address on the network
-    //console.log(networks[networkID].address)
-   // const contractAddress = networks[networkID].address
-
-    // instantiate the contract
-    //const contract = new web3.eth.Contract(abi, contractAddress)
-    
-
-    //const owner = await contract.methods.candidates("0x292072a24aa02b6b0248C9191d46175E11C86270").call()
-    //console.log(owner)
-  
 }
 
 
@@ -158,7 +131,6 @@ export const loadRegisteredCandidates=async(dispatch)=>{
     const isWeb3 = loadWeb3()
     const contract = await loadContract(isWeb3)
     const registeredCandidates = await contract.methods.getAllCandidates().call()
-    //console.log(registeredCandidates[0])
     registeredCandidates.map(data=>console.log(data))
     dispatch(candidates(registeredCandidates))
 }
@@ -169,13 +141,24 @@ export const vote=async(electorateAddress, candidateAddress)=>{
     const vote = await contract.methods.voteCandidate(candidateAddress).send({from: electorateAddress})
 }
 
-export const getVoteStatus=async(dispatch, electorateAddress)=>{
+export const getVoteStatus=async(dispatch)=>{
+
+    let accounts
+
     const isWeb3 = loadWeb3()
     const contract = await loadContract(isWeb3)
-    console.log(electorateAddress)
-    //const checkVoteStatus = await contract.methods.validateVote(electorateAddress).call()
-    //checkVoteStatus && dispatch(setVoteStatus(checkVoteStatus))
-    //return checkVoteStatus
+
+    try{
+        accounts = await isWeb3.eth.getAccounts()
+        const checkVoteStatus = await contract.methods.validateVote(accounts[0]).call()
+        checkVoteStatus && dispatch(setVoteStatus(checkVoteStatus))
+        console.log(checkVoteStatus)
+        return checkVoteStatus
+    }catch (err) {
+        return 'error'
+    }
+    
+    
 }
 
 
