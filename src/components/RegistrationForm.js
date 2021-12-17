@@ -1,7 +1,8 @@
 import '../styling/registrationform.css';
 import { useState } from 'react';
-import { useSelector, useSeletor } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { handleElectorateReg } from '../functions/functions';
+import Modal from './Modal';
 
 const RegistrationForm=()=>{
 
@@ -15,8 +16,29 @@ const RegistrationForm=()=>{
         state => state.addressReducer
     )
 
+    const registering = useSelector(
+        state=>state.registeringReducer
+    )
+
+    const regResponse = useSelector(
+        state => state.candidateRegReducer
+    )
+
+    const dispatch = useDispatch()
+
     return (
         <form className="registration-form" id="reg">
+
+            {
+                registering && <div className="modal">
+                    <img src="images/cube.gif" alt="registering"/>
+                </div>
+            }
+
+            {
+                regResponse.length > 0 && <Modal response = {regResponse}/>
+                
+            }
             <div className = "input-cont">
                 <input placeholder='First name' value={firstName} onChange={(event)=>setFirstName(event.target.value)}/>
                 <input placeholder='Last name' value={lastName} onChange={(event)=>setLastName(event.target.value)}/>
@@ -28,7 +50,7 @@ const RegistrationForm=()=>{
                 <input placeholder='State' value={state} onChange={(event)=>setState(event.target.value)}/>
             </div>
 
-            <button onClick={(e)=>handleElectorateReg(e,firstName, middleName, lastName, nin, state, address[0])} className="register">register</button>
+            <button onClick={(e)=>handleElectorateReg(e,firstName, middleName, lastName, nin, state, address[0], dispatch)} className="register">register</button>
             
             
         </form>

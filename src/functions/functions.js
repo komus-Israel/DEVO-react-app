@@ -193,8 +193,12 @@ export const uploadToPinata=async(file, setIPFSHash, dispatch, name, address, ip
 
         try {
             contract.methods.registerCandidates(address, name, ipfsHash).send({from: deployer}).then(
-                //dispatch(candidateRegResponse('confirm the candidate registration in your metamask wallet'))
-                res=>console.log(res)
+                res=>{
+                    dispatch(candidateRegResponse('confirm the candidate registration in your metamask wallet'))
+                    if(res.events.VoteCandidate){
+                        dispatch(candidateRegResponse('Your registration has been approved'))
+                    }
+                }
             )
         } catch(err) {
             dispatch(candidateRegResponse('error while registering candidate'))
@@ -212,22 +216,30 @@ export const uploadToPinata=async(file, setIPFSHash, dispatch, name, address, ip
 }
 
 
-export const handleElectorateReg=async (e,firstName, middleName, lastName, nin, state, address)=>{
+export const handleElectorateReg=async (e,firstName, middleName, lastName, nin, state, address, dispatch)=>{
+    
     e.preventDefault()
-
+    dispatch(registering())
     const isWeb3 = loadWeb3()
     const contract = await loadContract(isWeb3)
 
+
     try {
-        contract.methods.registerCandidates(address, name, ipfsHash).send({from: deployer}).then(
-            //dispatch(candidateRegResponse('confirm the candidate registration in your metamask wallet'))
-            res=>console.log(res)
+        contract.methods.registerVoter(firstName, lastName, middleName, state, nin).send({from: address}).then(
+            
+            res=>{
+                if(res.events.Registered)
+                dispatch(notRegistering())
+                dispatch(candidateRegResponse('Candidate registration has been approved'))
+            }
+            
         )
     } catch(err) {
         dispatch(candidateRegResponse('error while registering candidate'))
+        dispatch(notRegistering())
     }
 
-    console.log(address)
+    
 }
 
 

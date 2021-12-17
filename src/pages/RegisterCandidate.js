@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import CandidateRegistration from "../components/candidateRegistration";
 import '../styling/register.css';
 import { candidateRegResponse } from "../actions";
+import Modal from "../components/Modal";
 
 
 
@@ -42,9 +43,8 @@ const RegisterCandidate=()=>{
             }
 
             {
-                regResponse.length > 0 && <div className="modal" onClick={()=>dispatch(candidateRegResponse(""))}>
-                                            <h3>{regResponse}</h3>
-                                        </div>
+                regResponse.length > 0 && <Modal response = {regResponse}/>
+                
             }
             <div className="sub-register-cont">
                 <h2 className="register-header">Register candidate</h2>
