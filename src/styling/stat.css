@@ -1,6 +1,6 @@
 .stat-cont {
     
-    background: linear-gradient(180deg,rgb(72, 161, 221, .9), rgb(175, 66, 97, .9));
+    background: linear-gradient(180deg,rgb(72, 161, 221, .9), rgb(243, 237, 119, .5));
     height: fit-content;
     width: 80%;
     position: absolute;
@@ -19,7 +19,7 @@
 }
 
 .stat-data {
-    background: linear-gradient(to left bottom, rgba(255,255, 255, 0.3), rgba(255, 255, 255, .1));
+    background: linear-gradient(to left bottom, rgba(255,255, 255, 0.2), rgba(255, 255, 255, .1));
     padding: 1em;
     border-radius: 12px;
     box-shadow: 6px 12px 30px rgba(0, 0, 0, .4);
@@ -30,7 +30,7 @@
 }
 
 .stat-data p {
-    background-image: linear-gradient(45deg, #f3ec78, #af4261);
+    background-image: linear-gradient(45deg, rgb(232, 204, 50), #af4261);
     -webkit-background-clip: text;
     -webkit-text-fill-color:transparent;
     font-weight: bolder;
@@ -63,7 +63,7 @@
     }
 
     .stat-data {
-        background: linear-gradient(to left bottom, rgba(255,255, 255, 0.2), rgba(255, 255, 255, .4));
+        background: linear-gradient(180deg,rgb(72, 161, 221, .5), rgb(243, 237, 119, .5));
         padding: 0.5em;
         box-shadow: 6px 12px 30px rgba(0, 0, 0, .5);
         margin-bottom: 1em;
