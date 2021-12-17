@@ -1,8 +1,9 @@
 const StatData=({data})=>{
     return(
         <div className='stat-data'>
-            <h3>{data.name}</h3>
             <p>{data.count}</p>
+            <h3>{data.name}</h3>
+            
         </div>
     )
 }

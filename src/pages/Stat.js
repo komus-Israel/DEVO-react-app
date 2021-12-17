@@ -6,17 +6,17 @@ const Stat=()=>{
     const data = [
 
         {
-            name: "komolehin Israel",
+            name: "Candidates",
+            count: 2
+         },
+
+         {
+            name: "Electorates",
             count: 1000
          },
 
          {
-            name: "Registered Electorates",
-            count: 1000
-         },
-
-         {
-            name: "Registered Votes",
+            name: "Submitted Votes",
             count: 1000
          },
 
@@ -26,7 +26,9 @@ const Stat=()=>{
         <div className="homepage-container">
             <div className="stat-cont">
 
-                <div className="candidate-stat">
+                <h2 className="stat-header">  Stat </h2>
+
+                <div className="stats">
                     {
                         data.map(data=>(
                             <StatData data={data} />
@@ -34,13 +36,7 @@ const Stat=()=>{
                     }
                 </div>
 
-                <div className="other-stat">
-                    {
-                        data.map(data=>(
-                            <StatData data={data} />
-                        ))
-                    }
-                </div>
+            
                
 
             </div>
