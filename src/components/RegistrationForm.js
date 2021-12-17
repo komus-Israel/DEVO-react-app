@@ -50,7 +50,7 @@ const RegistrationForm=()=>{
                 <input placeholder='State' value={state} onChange={(event)=>setState(event.target.value)}/>
             </div>
 
-            <button onClick={(e)=>handleElectorateReg(e,firstName, middleName, lastName, nin, state, address[0], dispatch)} className="register">register</button>
+            <button onClick={(e)=>handleElectorateReg(e,firstName, middleName, lastName, nin, state, address[0], dispatch, setFirstName, setLastName, setMiddleName, setNIN, setState)} className="register">register</button>
             
             
         </form>

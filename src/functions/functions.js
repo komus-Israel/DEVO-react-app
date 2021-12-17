@@ -224,7 +224,7 @@ export const uploadToPinata=async(file, dispatch, name, address, deployer, setCa
 }
 
 
-export const handleElectorateReg=async (e,firstName, middleName, lastName, nin, state, address, dispatch)=>{
+export const handleElectorateReg=async (e,firstName, middleName, lastName, nin, state, address, dispatch, setFirstName, setLastName, setMiddleName, setNIN, setState)=>{
     
     e.preventDefault()
     dispatch(registering())
@@ -236,8 +236,13 @@ export const handleElectorateReg=async (e,firstName, middleName, lastName, nin, 
         contract.methods.registerVoter(firstName, lastName, middleName, state, nin).send({from: address}).then(
             
             res=>{
-                if(res.events.Registered)
+                if(res.events.ElectorateRegistered)
                 dispatch(notRegistering())
+                setFirstName('')
+                setLastName('')
+                setMiddleName('')
+                setNIN('')
+                setState('')
                 dispatch(RegResponse('Your registration has been approved'))
             }
             
