@@ -168,6 +168,14 @@ export const getVoteStatus=async(dispatch)=>{
     
 }
 
+export const getVoteCount=async()=>{
+    const isWeb3 = loadWeb3()
+    const contract = await loadContract(isWeb3)
+
+    const candidateVoteCount = await contract.methods.candidates("0x13a7b9d8C0186686f0C642eBCF3A1C299Ee1320f").call()
+    return candidateVoteCount
+}
+
 
 
 
