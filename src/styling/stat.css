@@ -1,7 +1,7 @@
 .stat-cont {
     
-    background: linear-gradient(to right bottom, rgba(0, 0, 255, 0.94), rgba(255, 0, 0, 0.679));
-    height: 300px;
+    background: linear-gradient(180deg,rgb(72, 161, 221, .9), rgb(175, 66, 97, .9));
+    height: fit-content;
     width: 80%;
     position: absolute;
     top: 50%;
@@ -12,11 +12,32 @@
     justify-content: center;
     align-items: center;
     grid-gap:20px;
+    flex-direction: column;
+    padding-top: 2em;
+    padding-bottom: 2em;
 }
 
 .stat-data {
-    background: linear-gradient(to right bottom, rgba(255,255, 255, 0.3), rgba(255, 255, 255, .6));
+    background: linear-gradient(to left bottom, rgba(255,255, 255, 0.3), rgba(255, 255, 255, .1));
     padding: 1em;
     border-radius: 12px;
     box-shadow: 6px 12px 30px rgba(0, 0, 0, .4);
+}
+
+.stat-data h3 {
+   color: antiquewhite;
+}
+
+.stat-data p {
+    background-image: linear-gradient(45deg, #f3ec78, #af4261);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color:transparent;
+    font-weight: bolder;
+    font-size: 2em;
+}
+
+.candidate-stat, .other-stat {
+    display: flex;
+    justify-content: space-evenly;
+    width: inherit;
 }

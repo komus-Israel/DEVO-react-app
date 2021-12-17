@@ -25,11 +25,23 @@ const Stat=()=>{
     return(
         <div className="homepage-container">
             <div className="stat-cont">
-                {
-                    data.map(data=>(
-                        <StatData data={data} />
-                    ))
-                }
+
+                <div className="candidate-stat">
+                    {
+                        data.map(data=>(
+                            <StatData data={data} />
+                        ))
+                    }
+                </div>
+
+                <div className="other-stat">
+                    {
+                        data.map(data=>(
+                            <StatData data={data} />
+                        ))
+                    }
+                </div>
+               
 
             </div>
         </div>

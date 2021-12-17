@@ -1,7 +1,7 @@
 const StatData=({data})=>{
     return(
         <div className='stat-data'>
-            <p>{data.name}</p>
+            <h3>{data.name}</h3>
             <p>{data.count}</p>
         </div>
     )
