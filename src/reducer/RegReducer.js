@@ -1,4 +1,4 @@
-const candidateRegReducer=(state='', action)=>{
+const RegReducer=(state='', action)=>{
 
     switch(action.type){
         case "REGISTERATION-ATTEMPTED":
@@ -9,4 +9,4 @@ const candidateRegReducer=(state='', action)=>{
 }
 
 
-export default candidateRegReducer
+export default RegReducer

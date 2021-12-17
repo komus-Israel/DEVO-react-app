@@ -1,9 +1,9 @@
 import Web3 from "web3";
 import Vote from '../abi/Vote.json';
-import { address, deployer, registering, notRegistering, candidateRegResponse } from "../actions";
+import { address, deployer, registering, notRegistering, RegResponse, ipfsResponse } from "../actions";
 import axios from "axios";
 import FormData from "form-data";
-require("dotenv").config()
+
 
 
 
@@ -157,7 +157,7 @@ export const loadDeployerAddress=async (dispatch, loadContract)=>{
 
 
 
-export const uploadToPinata=async(file, setIPFSHash, dispatch, name, address, ipfsHash, deployer, registerationResponse, setRegistrationResponse)=>{
+export const uploadToPinata=async(file, dispatch, name, address, deployer, setCandidateAddress, setCandidateName, setImages)=>{
 
     dispatch(registering())
 
@@ -189,31 +189,37 @@ export const uploadToPinata=async(file, setIPFSHash, dispatch, name, address, ip
             }
         )
 
-        console.log(res.data.IpfsHash)
-        setIPFSHash(res.data.IpfsHash)
+        const hash = res.data.IpfsHash
 
         try {
-            contract.methods.registerCandidates(address, name, ipfsHash).send({from: deployer}).then(
+            contract.methods.registerCandidates(address, name, hash).send({from: deployer}).then(
                 res=>{
-                    dispatch(candidateRegResponse('confirm the candidate registration in your metamask wallet'))
-                    if(res.events.VoteCandidate){
-                        dispatch(candidateRegResponse('Your registration has been approved'))
+                    if(res.events.CandidateRegistered){
+                        dispatch(notRegistering())
+                        dispatch(RegResponse('Candidate registration has been approved'))
+                        setCandidateAddress('')
+                        setCandidateName('')
+                        setImages([])
                     }
                 }
             )
         } catch(err) {
             console.log(err)
-            dispatch(candidateRegResponse('error while registering candidate'))
+            dispatch(RegResponse('error while registering candidate'))
         }
 
     } catch(err) {
-        dispatch(candidateRegResponse('network error'))
-        setIPFSHash('error while uploading')
+        dispatch(RegResponse('network error'))
+        dispatch(notRegistering())
     }
 
     
 
-    dispatch(notRegistering())
+    
+
+    
+
+    
 
 }
 
@@ -232,13 +238,13 @@ export const handleElectorateReg=async (e,firstName, middleName, lastName, nin, 
             res=>{
                 if(res.events.Registered)
                 dispatch(notRegistering())
-                dispatch(candidateRegResponse('Candidate registration has been approved'))
+                dispatch(RegResponse('Your registration has been approved'))
             }
             
         )
     } catch(err) {
 
-        dispatch(candidateRegResponse('error while registering candidate'))
+        dispatch(RegResponse('error while registering electorate'))
         dispatch(notRegistering())
     }
 

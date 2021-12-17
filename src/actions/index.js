@@ -59,12 +59,20 @@ export const notRegistering=()=>{
 }
 
 
-export const candidateRegResponse=(response)=>{
+export const RegResponse=(response)=>{
     return({
         type:"REGISTERATION-ATTEMPTED",
         payload:response
     })
 }
+
+export const ipfsResponse=(hash)=>{
+    return({
+        type:"HASH-GOTTEN",
+        payload:hash
+    })
+}
+
 
 /*export const candidateFailedRegResponse=(response)=>{
     return({

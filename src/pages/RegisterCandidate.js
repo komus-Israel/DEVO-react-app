@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import CandidateRegistration from "../components/candidateRegistration";
+import CandidateRegistration from "../components/CandidateRegistration";
 import '../styling/register.css';
-import { candidateRegResponse } from "../actions";
+import { RegResponse } from "../actions";
 import Modal from "../components/Modal";
 
 
@@ -17,7 +17,7 @@ const RegisterCandidate=()=>{
 
 
     const regResponse = useSelector(
-        state => state.candidateRegReducer
+        state => state.RegReducer
     )
 
 

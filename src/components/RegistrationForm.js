@@ -21,7 +21,7 @@ const RegistrationForm=()=>{
     )
 
     const regResponse = useSelector(
-        state => state.candidateRegReducer
+        state => state.RegReducer
     )
 
     const dispatch = useDispatch()

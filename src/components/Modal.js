@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux"
-import { candidateRegResponse } from "../actions"
+import { RegResponse } from "../actions"
 
 
 const Modal=({response})=>{
@@ -7,7 +7,7 @@ const Modal=({response})=>{
     const dispatch =useDispatch()
 
     return(
-        <div className="modal" onClick={()=>dispatch(candidateRegResponse(""))}>
+        <div className="modal" onClick={()=>dispatch(RegResponse(""))}>
                         <h3>{response}</h3>
         </div>
     )

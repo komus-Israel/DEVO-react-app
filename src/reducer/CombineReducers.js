@@ -5,7 +5,8 @@ import addressReducer from "./addressReducer";
 import candidateReducer from "./candidatesReducer";
 import deployerReducer from "./deployerReducer";
 import registeringReducer from "./registeringReducer";
-import candidateRegReducer from "./candidateRegReducer";
+import RegReducer from "./RegReducer";
+import ipfsReducer from "./ipfsReducer";
 
 const allReducers = combineReducers(
     {
@@ -15,7 +16,8 @@ const allReducers = combineReducers(
         candidateReducer,
         deployerReducer, 
         registeringReducer,
-        candidateRegReducer
+        RegReducer,
+        ipfsReducer
     }
 )
 

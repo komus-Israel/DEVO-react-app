@@ -1,8 +1,11 @@
 import React from "react"
-import { useEffect, useState } from "react"
+import {  useState } from "react"
 import { uploadToPinata } from "../functions/functions";
 import ImageUploading from 'react-images-uploading';
 import { useDispatch, useSelector } from "react-redux";
+
+
+
 
 
 
@@ -13,11 +16,12 @@ const CandidateRegistration=()=>{
     
 
     const [images, setImages] =useState([])
-    const [imageFile, setFile] = useState()
-    const [ipfsHash, setIPFSHash] = useState('')
     const [candidateName, setCandidateName] = useState('')
     const [candidateAddress, setCandidateAddress] = useState('')
-    const [registerationResponse, setRegistrationResponse] = useState('')
+
+
+    
+    
     
   
     const onChange = (imageList, addUpdateIndex) => {
@@ -31,6 +35,9 @@ const CandidateRegistration=()=>{
         state => state.deployerReducer
     )
 
+
+    
+
    
     return(
 
@@ -42,13 +49,13 @@ const CandidateRegistration=()=>{
 
                 <div className="inputs">
                     <input placeholder='candidate address' className='candidate-address' value={candidateAddress} onChange={(e)=>setCandidateAddress(e.target.value)}/>
-                    <input placeholder='candidate name' className='candidate-name' value={candidateName} onChange={(e)=>setCandidateName(e.target.value)}/>
+                    <input placeholder='candidate name' className='candidate-fullname' value={candidateName} onChange={(e)=>setCandidateName(e.target.value)}/>
                     <div>
 
                         {
                             (images.length > 0 && candidateName.length > 0 && candidateAddress.length > 0) ? (
                                                                                                 <button className="register-candidate-btn" /*onClick={()=>console.log(images[0].file)}*/ onClick={()=>
-                                                                                                                        uploadToPinata(images[0].file, setIPFSHash, dispatch, candidateName, candidateAddress, ipfsHash, deployer)
+                                                                                                                        uploadToPinata(images[0].file, dispatch, candidateName, candidateAddress, deployer, setCandidateAddress, setCandidateName, setImages)
                                                                                                         }>register</button>
                                                                                                         
                                                                                                 
