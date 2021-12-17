@@ -45,3 +45,30 @@ export const deployer=(address)=>{
         payload:address
     })
 }
+
+export const registering=()=>{
+    return({
+        type:"REGISTERING",
+    })
+}
+
+export const notRegistering=()=>{
+    return({
+        type:"NOT-REGISTERING",
+    })
+}
+
+
+export const candidateRegResponse=(response)=>{
+    return({
+        type:"REGISTERATION-ATTEMPTED",
+        payload:response
+    })
+}
+
+/*export const candidateFailedRegResponse=(response)=>{
+    return({
+        type:"FAILED-REGISTRATION",
+        payload:response
+    })
+}*/

@@ -2,6 +2,7 @@ import React from "react"
 import { useEffect, useState } from "react"
 import { uploadToPinata } from "../functions/functions";
 import ImageUploading from 'react-images-uploading';
+import { useDispatch, useSelector } from "react-redux";
 
 
 
@@ -16,16 +17,27 @@ const CandidateRegistration=()=>{
     const [ipfsHash, setIPFSHash] = useState('')
     const [candidateName, setCandidateName] = useState('')
     const [candidateAddress, setCandidateAddress] = useState('')
+    const [registerationResponse, setRegistrationResponse] = useState('')
+    
   
     const onChange = (imageList, addUpdateIndex) => {
       // data for submit
       setImages(imageList);
     };
 
+    const dispatch = useDispatch()
+
+    const deployer = useSelector(
+        state => state.deployerReducer
+    )
+
    
     return(
 
         <div className='candidate-registration-form'>
+
+           
+            
             <div className='candidate-registration-formdiv'>
 
                 <div className="inputs">
@@ -35,11 +47,11 @@ const CandidateRegistration=()=>{
 
                         {
                             (images.length > 0 && candidateName.length > 0 && candidateAddress.length > 0) ? (
-                                                                                                <button className="register-candidate-btn" /*onClick={()=>console.log(images[0].file)}*/ onClick={async()=>{
-                                                                                                                        const hash = await uploadToPinata(images[0].file)
-                                                                                                                        setIPFSHash(hash)
-                                                                                                                }}>register
-                                                                                                </button>
+                                                                                                <button className="register-candidate-btn" /*onClick={()=>console.log(images[0].file)}*/ onClick={()=>
+                                                                                                                        uploadToPinata(images[0].file, setIPFSHash, dispatch, candidateName, candidateAddress, ipfsHash, deployer)
+                                                                                                        }>register</button>
+                                                                                                        
+                                                                                                
                                                                                             ) 
                             :
 
@@ -49,7 +61,8 @@ const CandidateRegistration=()=>{
                     </div>
                 </div>
 
-                <div className="image-upload">                        
+                <div className="image-upload">    
+                  
                         <ImageUploading
 
                        

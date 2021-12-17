@@ -1,6 +1,6 @@
 import Web3 from "web3";
 import Vote from '../abi/Vote.json';
-import { address, deployer } from "../actions";
+import { address, deployer, registering, notRegistering, candidateRegResponse } from "../actions";
 import axios from "axios";
 import FormData from "form-data";
 require("dotenv").config()
@@ -157,7 +157,13 @@ export const loadDeployerAddress=async (dispatch, loadContract)=>{
 
 
 
-export const uploadToPinata=async(file)=>{
+export const uploadToPinata=async(file, setIPFSHash, dispatch, name, address, ipfsHash, deployer, registerationResponse, setRegistrationResponse)=>{
+
+    dispatch(registering())
+
+    const isWeb3 = loadWeb3()
+    const contract = await loadContract(isWeb3)
+
     const url = `https://api.pinata.cloud/pinning/pinFileToIPFS`
     let data = new FormData()
 
@@ -167,21 +173,42 @@ export const uploadToPinata=async(file)=>{
 
     data.append("file", file)
 
-    const res = await axios.post(
-        url,
-        data,
-        {
-            maxContentLength: "Infinity",
-            headers: {
-                "Content-Type": `multipart/form-data;boundary=${data._boundary}`, 
-                'pinata_api_key': API_KEY,
-                'pinata_secret_api_key': API_SECRET
-
+    try{
+        const res = await axios.post(
+            url,
+            data,
+            {
+                maxContentLength: "Infinity",
+                headers: {
+                    "Content-Type": `multipart/form-data;boundary=${data._boundary}`, 
+                    'pinata_api_key': API_KEY,
+                    'pinata_secret_api_key': API_SECRET
+    
+                }
             }
-        }
-    )
+        )
 
-    return(res.data)
+        console.log(res.data.IpfsHash)
+        setIPFSHash(res.data.IpfsHash)
+
+        try {
+            contract.methods.registerCandidates(address, name, ipfsHash).send({from: deployer}).then(
+                //dispatch(candidateRegResponse('confirm the candidate registration in your metamask wallet'))
+                res=>console.log(res)
+            )
+        } catch(err) {
+            dispatch(candidateRegResponse('error while registering candidate'))
+        }
+
+    } catch(err) {
+        dispatch(candidateRegResponse('network error'))
+        setIPFSHash('error while uploading')
+    }
+
+    
+
+    dispatch(notRegistering())
+
 }
 
 
