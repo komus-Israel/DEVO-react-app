@@ -1,4 +1,5 @@
 import '../styling/nav.css';
+import { Link } from 'react-router-dom';
 
 
 
@@ -9,7 +10,7 @@ const Nav =()=>{
             <div className='header-options'>
                     <a href="#can">Vote</a>
                     <a href="#reg">Register</a>
-                    <a href="/">Stat</a>
+                    <Link to="/stat">Stat</Link>
             </div>
         </nav>
     )

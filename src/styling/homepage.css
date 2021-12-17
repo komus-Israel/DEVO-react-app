@@ -162,6 +162,23 @@
     height: 50px;
 }
 
+.vote-count {
+    background-image: linear-gradient(45deg, #f3ec78, #af4261);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color:transparent;
+    font-weight: bolder;
+}
+
+.candidate-name {
+    text-align: center;
+    display: flex;
+    width: fit-content;
+    margin: auto;
+    max-width: 50%;
+
+    
+}
+
 
 @media only screen and (max-width:560px){
 

@@ -13,8 +13,8 @@ const DevoHomePage=()=>{
 
     const candidates = [
 
-        {name:"komus", img: "./images/komus.jfif", party:"zion"},
-        {name:"komus", img: "./images/komus.jfif", party:"zion"},
+        {name:"Komolehin Israel", img: "./images/komus.jfif", voteCount:1000},
+        {name:"komus Eddison", img: "./images/komus.jfif", voteCount:1},
 
     ]
   

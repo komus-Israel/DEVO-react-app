@@ -173,6 +173,7 @@ export const uploadToPinata=async(file, setIPFSHash, dispatch, name, address, ip
 
     data.append("file", file)
 
+
     try{
         const res = await axios.post(
             url,
@@ -201,6 +202,7 @@ export const uploadToPinata=async(file, setIPFSHash, dispatch, name, address, ip
                 }
             )
         } catch(err) {
+            console.log(err)
             dispatch(candidateRegResponse('error while registering candidate'))
         }
 
@@ -235,6 +237,7 @@ export const handleElectorateReg=async (e,firstName, middleName, lastName, nin, 
             
         )
     } catch(err) {
+
         dispatch(candidateRegResponse('error while registering candidate'))
         dispatch(notRegistering())
     }

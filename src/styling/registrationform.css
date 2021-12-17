@@ -34,11 +34,11 @@
 .register {
     border: none;
     border-radius: 5px;
-    background: #af4261;
+    background: linear-gradient(to right, rgb(72, 161, 221, .3), #78f3d2 );
     width: 200px;
     margin: auto;
     margin-top: 10px;
-    padding: 1em;
+    padding: 12px;
 }
 
 

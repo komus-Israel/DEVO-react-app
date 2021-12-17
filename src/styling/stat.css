@@ -1,0 +1,22 @@
+.stat-cont {
+    
+    background: linear-gradient(to right bottom, rgba(0, 0, 255, 0.94), rgba(255, 0, 0, 0.679));
+    height: 300px;
+    width: 80%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-gap:20px;
+}
+
+.stat-data {
+    background: linear-gradient(to right bottom, rgba(255,255, 255, 0.3), rgba(255, 255, 255, .6));
+    padding: 1em;
+    border-radius: 12px;
+    box-shadow: 6px 12px 30px rgba(0, 0, 0, .4);
+}

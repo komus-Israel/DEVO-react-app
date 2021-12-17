@@ -15,23 +15,11 @@ const RegisterCandidate=()=>{
         state=>state.registeringReducer
     )
 
-    const isInstalled = useSelector(
-        state => state.hasWalletReducer
-    )
 
     const regResponse = useSelector(
         state => state.candidateRegReducer
     )
 
-    const dispatch = useDispatch()
-
-    useEffect(()=>{
-        
-        console.log(isInstalled)
-
-        
-
-    })
 
     return (
         <div className="homepage-container">

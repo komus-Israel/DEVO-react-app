@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { checkEthereum, checkWalletConnection, loadBlockchainData, loadWeb3, loadDeployerAddress, loadContract, userWeb3Address } from './functions/functions';
 import { installedWallet, address } from './actions';
 import { Redirect } from 'react-router';
+import Stat from './pages/Stat';
 
 
 
@@ -86,10 +87,9 @@ function App() {
                     
                   }
                   
-                  
-                  
-                  
                   />
+
+                  <Route path="/stat" component={Stat}/>
               </Switch>
              
             </div>
