@@ -172,9 +172,10 @@ export const vote=async(electorateAddress, candidateAddress)=>{
 export const getVoteStatus=async(dispatch, electorateAddress)=>{
     const isWeb3 = loadWeb3()
     const contract = await loadContract(isWeb3)
-    const checkVoteStatus = await contract.methods.validateVote(electorateAddress).call()
-    checkVoteStatus && dispatch(setVoteStatus(checkVoteStatus))
-    console.log(checkVoteStatus)
+    console.log(electorateAddress)
+    //const checkVoteStatus = await contract.methods.validateVote(electorateAddress).call()
+    //checkVoteStatus && dispatch(setVoteStatus(checkVoteStatus))
+    //return checkVoteStatus
 }
 
 

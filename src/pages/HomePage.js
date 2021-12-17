@@ -4,7 +4,7 @@ import WelcomeMsg from "../components/WelcomeMsg";
 import RegistrationForm from "../components/RegistrationForm";
 import Candidate from '../components/Candidate';
 import Instructions from '../components/Instructions';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 
 
@@ -13,24 +13,22 @@ const DevoHomePage=()=>{
 
     
 
-    /*const candidates = [
-
-        {name:"Komolehin Israel", img: "./images/komus.jfif", voteCount:1000},
-        {name:"komus Eddison", img: "./images/komus.jfif", voteCount:1},
-
-    ]*/
+    const [voting, setVoting] = useState(true)
 
     const allCandidates = useSelector(
         state => state.candidateReducer
       )
-
-    useEffect(()=>{
-        
-          console.log(typeof(allCandidates))
-    })
   
     return(
         <div className="homepage-container">
+
+            {
+                voting && (
+                            <div className="modal" id="voting-modal">
+                                <img src="images/cube.gif" alt="registering"/>
+                            </div>
+                )
+            }
             <Nav />
             <WelcomeMsg />
 
