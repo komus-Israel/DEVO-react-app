@@ -49,11 +49,13 @@
 
 .connect-wallet {
     border:none;
-    background: linear-gradient(45deg,   #af4261, #48a1dd);
+    background: linear-gradient(45deg,   rgb(175, 66, 97, .9), rgb(72, 161, 221, .9));
     padding: 1em;
-    border-radius: 10px;
+    border-radius: 5px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     display: flex;
+    font-weight: bold;
+    color: rgb(24, 1, 24);
 }
 
 .get-started {
@@ -78,11 +80,11 @@
 .candidate-profile {
 
     margin: auto;
-    background: linear-gradient(45deg,   #af4261, #48a1dd);
     border-radius: 10px;
     width: fit-content;
     margin-bottom: 50px;
     height: 300px;
+    
     
     
 }
@@ -93,6 +95,9 @@
     width: 200px;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+    position: relative;
+    
+    
 }
 
 .canditates-header {
@@ -216,7 +221,10 @@
     }
 
     .connect-wallet {
-        font-size: 12px;
+        font-size: 7px;
+        padding: 10px;
+        padding-top: 6px;
+        padding-bottom: 6px;
     }
 
     .instruction-cont {
@@ -264,6 +272,8 @@
     .connected-address {
         width: max-content;
         padding: 3px;
+        padding-top: 0.5px;
+        padding-bottom: 0.5px;
     }
 
     .connected-address p {
