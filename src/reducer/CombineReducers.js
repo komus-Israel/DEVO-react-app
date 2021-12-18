@@ -8,6 +8,8 @@ import registeringReducer from "./registeringReducer";
 import RegReducer from "./RegReducer";
 import voteReducer from "./voteReducer";
 import votingReducer from "./votingReducer";
+import allElectoratesReducer from "./allElectoratesReducer";
+import countVoteReducer from "./countVoteReducer";
 
 const allReducers = combineReducers(
     {
@@ -19,7 +21,9 @@ const allReducers = combineReducers(
         registeringReducer,
         RegReducer,
         voteReducer,
-        votingReducer
+        votingReducer,
+        allElectoratesReducer,
+        countVoteReducer
        
     }
 )

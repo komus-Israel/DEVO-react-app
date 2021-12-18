@@ -86,3 +86,17 @@ export const endVoting=(status)=>{
         payload:status
     })
 }
+
+export const getNoOfElectorates=(count)=>{
+    return({
+        type:"REGISTERED-ELECTORATES",
+        payload:count
+    })
+}
+
+export const countVote=(count)=>{
+    return({
+        type:"COUNT",
+        payload:count
+    })
+}

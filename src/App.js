@@ -8,7 +8,7 @@ import {
          checkEthereum, checkWalletConnection, 
         loadBlockchainData, loadWeb3, loadDeployerAddress, 
         loadContract, loadRegisteredCandidates, 
-        getVoteStatus} from './functions/functions';
+        fetchNoOfElectorates} from './functions/functions';
 
 import { installedWallet, address } from './actions';
 import { Redirect } from 'react-router';
@@ -50,6 +50,9 @@ function App() {
 
     //  load the registered candidates
     loadRegisteredCandidates(dispatch)
+
+    // fetch the number of registered electorates
+    fetchNoOfElectorates(dispatch)
 
   
     const handleWalletInstallation= async ()=>{

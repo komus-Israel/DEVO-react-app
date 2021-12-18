@@ -1,6 +1,6 @@
 import Web3 from "web3";
 import Vote from '../abi/Vote.json';
-import { address, deployer, registering, notRegistering, RegResponse, candidates, setVoteStatus, startVoting, endVoting } from "../actions";
+import { address, deployer, registering, notRegistering, RegResponse, candidates, setVoteStatus, startVoting, endVoting, getNoOfElectorates, countVote } from "../actions";
 import axios from "axios";
 import FormData from "form-data";
 
@@ -145,6 +145,22 @@ export const vote=async(dispatch, electorateAddress, candidateAddress)=>{
     dispatch(endVoting(false))
 }
 
+export const fetchNoOfElectorates=async(dispatch)=>{
+    const isWeb3 = loadWeb3()
+    const contract = await loadContract(isWeb3)
+    const noOfElectorates = await contract.methods.noOfRegisteredVoters().call()
+    dispatch(getNoOfElectorates(noOfElectorates))
+   
+}
+
+export const events = async()=>{
+    const isWeb3 = loadWeb3()
+    const contract = await loadContract(isWeb3)
+    console.log(contract.events.VoteCandidate())
+    console.log(contract.events.ElectorateRegistered())
+
+}
+
 export const getVoteStatus=async(dispatch)=>{
 
     let accounts
@@ -172,6 +188,36 @@ export const getVoteCount=async(electorateAddress)=>{
     const candidateVoteCount = await contract.methods.voteCount(electorateAddress).call()
     return candidateVoteCount
 }
+
+
+export const getTotalVote=async(dispatch, candidates)=>{
+    const candidateAddressArray = []
+    let eachVoteCount = []
+
+    // get the address of the registered candidate
+    candidates.forEach(
+        (candidate)=>candidateAddressArray.push(candidate.candidateAddress)
+        )
+
+    await Promise.all(
+
+        candidateAddressArray.map(async (address)=>{
+            const count = await getVoteCount(address)
+            eachVoteCount.push(count)
+        })
+
+    
+    )
+    dispatch()
+   return eachVoteCount.reduce(sum)
+    
+}
+
+export const sum=(num1, num2)=>{
+    return Number(num1) + Number(num2)
+}
+
+
 
 
 
