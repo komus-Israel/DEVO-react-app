@@ -1,5 +1,6 @@
 import '../styling/stat.css';
 import StatData from '../components/StatData';
+import { useSelector } from 'react-redux';
 
 const Stat=()=>{
 
@@ -22,6 +23,10 @@ const Stat=()=>{
 
 
     ]
+
+    const noOfCandidates = useSelector(
+        state => state.candidateReducer
+    )
     return(
         <div className="homepage-container">
             <div className="stat-cont">
@@ -34,6 +39,8 @@ const Stat=()=>{
                             <StatData data={data} />
                         ))
                     }
+
+                    <StatData data={{name: "candidates", count: noOfCandidates.length}} />
                 </div>
 
             

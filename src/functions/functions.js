@@ -131,14 +131,11 @@ export const loadRegisteredCandidates=async(dispatch)=>{
     const isWeb3 = loadWeb3()
     const contract = await loadContract(isWeb3)
     const registeredCandidates = await contract.methods.getAllCandidates().call()
-    registeredCandidates.map(data=>console.log(data))
     dispatch(candidates(registeredCandidates))
 }
 
 export const vote=async(dispatch, electorateAddress, candidateAddress)=>{
     dispatch(startVoting(true))
-    console.log(electorateAddress)
-    console.log(candidateAddress)
     const isWeb3 = loadWeb3()
     const contract = await loadContract(isWeb3)
     const vote = await contract.methods.voteCandidate(candidateAddress).send({from: electorateAddress})
@@ -168,11 +165,11 @@ export const getVoteStatus=async(dispatch)=>{
     
 }
 
-export const getVoteCount=async()=>{
+export const getVoteCount=async(electorateAddress)=>{
     const isWeb3 = loadWeb3()
     const contract = await loadContract(isWeb3)
 
-    const candidateVoteCount = await contract.methods.candidates("0x13a7b9d8C0186686f0C642eBCF3A1C299Ee1320f").call()
+    const candidateVoteCount = await contract.methods.voteCount(electorateAddress).call()
     return candidateVoteCount
 }
 

@@ -21,7 +21,7 @@ const Candidate= ({candidate})=>{
     useEffect(()=>{
 
         const getCountFromPromise = async() => {
-            const count = await getVoteCount() 
+            const count = await getVoteCount(candidate.candidateAddress) 
             setVoteCount(count)       
         }
        

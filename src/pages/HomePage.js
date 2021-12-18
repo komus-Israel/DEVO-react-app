@@ -53,22 +53,28 @@ const DevoHomePage=()=>{
 
                 <Instructions />
 
-                <div className="candidates" id="can">
+                {
+                    allCandidates.length > 0 && (
+                                        <div className="candidates" id="can">
                     
-                    <h2 className="canditates-header">Candidates</h2>
+                                            <h2 className="canditates-header">Candidates</h2>
 
-                    <div className="candidate-list">
-                        {
-                            allCandidates.map((candidate, index)=>{
-                                return(
-                                        <Candidate candidate={candidate} key={index}/>
-                                )
-                            })
-                        }
-                    </div>
+                                            <div className="candidate-list">
+                                                {
+                                                    allCandidates.map((candidate, index)=>{
+                                                        return(
+                                                                <Candidate candidate={candidate} key={index}/>
+                                                        )
+                                                    })
+                                                }
+                                            </div>
                     
                    
-                </div>
+                                         </div>
+                    )
+                }
+
+                
                 
             </div>
         </div>     
