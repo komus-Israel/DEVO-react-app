@@ -1,7 +1,7 @@
 const countVoteReducer=(state=0, action)=>{
     switch(action.type){
         case "COUNT":
-            return state + action.payload
+            return action.payload
         default:
             return state
     }

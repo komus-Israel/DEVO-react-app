@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux"
-import { connectEthereumWallet, disconnectEthereumWallet } from "../functions/functions"
+import { connectEthereumWallet } from "../functions/functions"
 import { useDispatch } from "react-redux";
-import { useEffect } from "react";
+
 
 
 
@@ -36,7 +36,7 @@ const WelcomeMsg=()=>{
 
                 !isInstalled ? <button className="connect-wallet">Install MetaMask</button> :
 
-                (connectedAddress.length > 0) && <button className="connect-wallet" onClick={disconnectEthereumWallet}>Vote</button>
+                (connectedAddress.length > 0) && <div className="connected-address" href="#reg"><p>{connectedAddress}</p></div>
 
                 
             }

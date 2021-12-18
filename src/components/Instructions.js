@@ -7,7 +7,7 @@ const Instructions=()=>{
         {instruction: "Install MetaMask Wallet"},
         {instruction: "Connect Wallet"},
         {instruction: "Get Registered"},
-        {instruction: "Vote your desired candidate"},
+        {instruction: "Select the image of your desired candidate to vote"},
     ]
 
     return(

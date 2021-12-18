@@ -74,16 +74,6 @@ export const connectEthereumWallet= async (dispatch)=>{
     }
 }
 
-export const disconnectEthereumWallet= async ()=>{
-    const ethereum = checkEthereum()
-    /*if (ethereum) {
-        ethereum.request.disconnect()
-    }*/
-    console.log("disconnected")
-    console.log(ethereum)
-
-}
-
 
 export const loadWeb3=()=>{
     const web3 = new Web3(Web3.givenProvider || "http://localhost:8545")
@@ -132,6 +122,7 @@ export const loadRegisteredCandidates=async(dispatch)=>{
     const contract = await loadContract(isWeb3)
     const registeredCandidates = await contract.methods.getAllCandidates().call()
     dispatch(candidates(registeredCandidates))
+    return registeredCandidates
 }
 
 export const vote=async(dispatch, electorateAddress, candidateAddress)=>{
@@ -150,15 +141,8 @@ export const fetchNoOfElectorates=async(dispatch)=>{
     const contract = await loadContract(isWeb3)
     const noOfElectorates = await contract.methods.noOfRegisteredVoters().call()
     dispatch(getNoOfElectorates(noOfElectorates))
+    
    
-}
-
-export const events = async()=>{
-    const isWeb3 = loadWeb3()
-    const contract = await loadContract(isWeb3)
-    console.log(contract.events.VoteCandidate())
-    console.log(contract.events.ElectorateRegistered())
-
 }
 
 export const getVoteStatus=async(dispatch)=>{
@@ -172,7 +156,6 @@ export const getVoteStatus=async(dispatch)=>{
         accounts = await isWeb3.eth.getAccounts()
         const checkVoteStatus = await contract.methods.validateVote(accounts[0]).call()
         checkVoteStatus && dispatch(setVoteStatus(checkVoteStatus))
-        console.log(checkVoteStatus)
         return checkVoteStatus
     }catch (err) {
         return 'error'
@@ -190,26 +173,27 @@ export const getVoteCount=async(electorateAddress)=>{
 }
 
 
-export const getTotalVote=async(dispatch, candidates)=>{
-    const candidateAddressArray = []
+export const getTotalVote=async(dispatch)=>{
+
+    const registeredCandidates = await loadRegisteredCandidates(dispatch)
+    
     let eachVoteCount = []
 
-    // get the address of the registered candidate
-    candidates.forEach(
-        (candidate)=>candidateAddressArray.push(candidate.candidateAddress)
-        )
 
     await Promise.all(
-
-        candidateAddressArray.map(async (address)=>{
-            const count = await getVoteCount(address)
-            eachVoteCount.push(count)
-        })
-
-    
+        registeredCandidates.map(
+            async (candidate)=>{
+                const count = await getVoteCount(candidate.candidateAddress)
+                eachVoteCount.push(count)
+            }
+        )
     )
-    dispatch()
-   return eachVoteCount.reduce(sum)
+
+
+    dispatch(countVote(eachVoteCount.reduce(sum)))
+    
+    
+   
     
 }
 
@@ -269,7 +253,6 @@ export const uploadToPinata=async(file, dispatch, name, address, deployer, setCa
                 }
             )
         } catch(err) {
-            console.log(err)
             dispatch(RegResponse('error while registering candidate'))
         }
 

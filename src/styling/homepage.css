@@ -82,6 +82,7 @@
     border-radius: 10px;
     width: fit-content;
     margin-bottom: 50px;
+    height: 300px;
     
     
 }
@@ -140,6 +141,8 @@
     padding: 2em;
     box-shadow: 6px 12px 30px black;
     
+   
+    
 }
 
 
@@ -157,7 +160,7 @@
 }
 
 .svg {
-    margin-top: -50px;
+    margin-top: -65px;
     border-radius: 12px;
 
 }
@@ -188,6 +191,17 @@
     z-index: 10000000;
 }
 
+.connected-address {
+    border-radius: 5px;
+    background:linear-gradient(
+            to left top,
+            rgba(255, 255, 255, .5),
+            rgba(255, 255, 255, 0.7)
+        );
+    padding: 10px;
+    color: rgb(31, 4, 51);
+    font-weight: bold;
+}
 
 @media only screen and (max-width:560px){
 
@@ -239,6 +253,25 @@
         border-radius: 12px;
     
     }
+    .candidate-list {
+        width: 100%;
+    }
+
+    .svg {
+        margin-top: -50px;
+    }
+
+    .connected-address {
+        width: max-content;
+        padding: 3px;
+    }
+
+    .connected-address p {
+        font-weight: normal;
+        font-size: 10px;
+    }
+
+    
     
 
     
