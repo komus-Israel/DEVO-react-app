@@ -27,14 +27,8 @@ function App() {
   const isWeb3  = loadWeb3()
   
 
-  const electorateAddress = useSelector(
-    state => state.addressReducer
-  )
-
-
   useEffect(()=>{
     
-    console.log(electorateAddress)
     const checkEth = checkEthereum()
     checkEth && dispatch(installedWallet())
 

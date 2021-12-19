@@ -36,7 +36,7 @@ const WelcomeMsg=()=>{
 
                 !isInstalled ? <button className="connect-wallet">Install MetaMask</button> :
 
-                (connectedAddress.length > 0) && <div className="connected-address" href="#reg"><p>{connectedAddress}</p></div>
+                (connectedAddress.length > 0) && <div className="connected-address"><p>{connectedAddress}</p></div>
 
                 
             }
