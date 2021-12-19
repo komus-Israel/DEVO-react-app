@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 
 
 
-const Nav =({voteRef, registerRef})=>{
+const Nav =({voteRef, registerRef, candidates})=>{
 
 
     const isContract = useSelector(
@@ -29,7 +29,9 @@ const Nav =({voteRef, registerRef})=>{
             {
                 isContract && (
                     <div className='header-options'>
-                        <a onClick={()=>scrollTo(voteRef)}>Vote</a>
+                        {
+                            candidates.length > 0 && <a onClick={()=>scrollTo(voteRef)}>Vote</a>
+                        }
                         <a onClick={()=>scrollTo(registerRef)}>Register</a>
                         <Link to="/stat">Stat</Link>
                    

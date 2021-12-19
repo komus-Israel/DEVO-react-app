@@ -45,7 +45,7 @@ const DevoHomePage=()=>{
                             </div>
                 )
             }
-            <Nav voteRef={voteRef} registerRef={registerRef}/>
+            <Nav voteRef={voteRef} registerRef={registerRef} candidates={allCandidates}/>
             <WelcomeMsg />
            
 
