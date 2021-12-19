@@ -17,7 +17,7 @@ This application isn't 100% secured as an identity can register with various add
 
 * Smart contract was written in solidity
 
-* Unit testing and deveployment using Truffle
+* Unit testing and deployment with Truffle
 
 * Client application built with react
 
