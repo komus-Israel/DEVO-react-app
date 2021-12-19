@@ -1,6 +1,6 @@
 import Web3 from "web3";
 import Vote from '../abi/Vote.json';
-import { address, deployer, registering, notRegistering, RegResponse, candidates, setVoteStatus, startVoting, endVoting, getNoOfElectorates, countVote } from "../actions";
+import { address, deployer, registering, notRegistering, RegResponse, candidates, setVoteStatus, startVoting, endVoting, getNoOfElectorates, countVote, approveElectorate } from "../actions";
 import axios from "axios";
 import FormData from "form-data";
 
@@ -159,8 +159,8 @@ export const fetchNoOfElectorates=async(dispatch)=>{
 export const checkIfAddressIsRegistered=async(address)=>{
     const isWeb3 = loadWeb3()
     const contract = await loadContract(isWeb3)
-
-    const isRegistered = await contract.methods.registered(address).call()
+    const accountFromWeb3 = await isWeb3.eth.getAccounts()
+    const isRegistered = await contract.methods.registered(accountFromWeb3[0]).call()
     return isRegistered
 }
 
@@ -298,13 +298,14 @@ export const handleElectorateReg=async (e,firstName, middleName, lastName, nin, 
             
             res=>{
                 if(res.events.ElectorateRegistered)
-                dispatch(notRegistering())
-                setFirstName('')
-                setLastName('')
-                setMiddleName('')
-                setNIN('')
-                setState('')
-                dispatch(RegResponse('Your registration has been approved'))
+                    dispatch(notRegistering())
+                    setFirstName('')
+                    setLastName('')
+                    setMiddleName('')
+                    setNIN('')
+                    setState('')
+                    dispatch(approveElectorate())
+                    dispatch(RegResponse('Your registration has been approved'))
             }
             
         )

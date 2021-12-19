@@ -34,7 +34,7 @@ function App() {
 
   useEffect(()=>{
     
-    
+    console.log(electorateAddress)
     const checkEth = checkEthereum()
     checkEth && dispatch(installedWallet())
 
@@ -55,10 +55,10 @@ function App() {
 
         // get is the connected address is registered
 
-        const checkIfRegistered = await checkIfAddressIsRegistered(electorateAddress)
+        const checkIfRegistered = await checkIfAddressIsRegistered()
 
         if (checkIfRegistered) {
-          dispatch(approveElectorate)
+          dispatch(approveElectorate())
         }
 
         

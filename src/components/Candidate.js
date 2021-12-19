@@ -20,7 +20,9 @@ const Candidate= ({candidate})=>{
 
 
     const [voteCount, setVoteCount] = useState('')
-    const [registered, setregistered] = useState(false)
+    const registered = useSelector(
+        state => state.aRegisteredElectorateReducer
+    )
 
     const imgStyle = {
         zIndex: voteStatus && -100000000000,
@@ -41,13 +43,9 @@ const Candidate= ({candidate})=>{
             setVoteCount(count)       
         }
        
-        const checkIfRegistered=async()=>{
-            const registeredStatus = await checkIfAddressIsRegistered(electorateAddress[0])
-            setregistered(registeredStatus)
-        }
 
         getCountFromPromise()
-        checkIfRegistered()
+
 
     }, [])
     return(
