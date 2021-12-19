@@ -300,3 +300,5 @@ export const handleElectorateReg=async (e,firstName, middleName, lastName, nin, 
 
 
 
+
+

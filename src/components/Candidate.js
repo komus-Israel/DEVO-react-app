@@ -1,4 +1,3 @@
-import { candidates } from "../actions"
 import { useSelector, useDispatch } from "react-redux"
 import { vote, getVoteCount } from "../functions/functions"
 import { useEffect, useState } from 'react'

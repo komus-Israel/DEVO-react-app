@@ -82,7 +82,7 @@ function App() {
             <div className="App">
 
               <Switch>
-                  <Route exact path='/' component={DevoHomePage} />
+                  <Route exact path='/' component={DevoHomePage}/>
 
                   <Route path='/candidate-register' 
                   render={

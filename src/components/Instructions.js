@@ -11,7 +11,7 @@ const Instructions=()=>{
     ]
 
     return(
-        <div className="instruction-cont">
+        <div className="instruction-cont" id="con">
             <div>
                 <h2>
                     Trustless secured voting system

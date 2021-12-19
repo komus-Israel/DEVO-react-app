@@ -7,12 +7,14 @@ import Instructions from '../components/Instructions';
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getVoteStatus } from '../functions/functions';
+import { useRef } from 'react';
+
 
 
 
 const DevoHomePage=()=>{
 
-    
+    const voteRef = useRef(null)
 
     const voting = useSelector(
         state => state.votingReducer
@@ -42,20 +44,22 @@ const DevoHomePage=()=>{
                             </div>
                 )
             }
-            <Nav />
+            <Nav vref={voteRef}/>
             <WelcomeMsg />
+           
 
-            <div className="page-content">
+            <div className="page-content" >
 
-                <h2 className="get-started">Let's Get You Started</h2>
+                <h2 className="get-started" >Let's Get You Started</h2>
 
                 <RegistrationForm />
 
                 <Instructions />
 
+               
                 {
                     allCandidates.length > 0 && (
-                                        <div className="candidates" id="can">
+                                        <section className="candidates" ref={voteRef}>
                     
                                             <h2 className="canditates-header">Candidates</h2>
 
@@ -70,10 +74,13 @@ const DevoHomePage=()=>{
                                             </div>
                     
                    
-                                         </div>
+                                         </section>
                     )
                 }
+              
 
+                
+              
                 
                 
             </div>
