@@ -34,7 +34,7 @@ const WelcomeMsg=()=>{
             {
                 isInstalled && connectedAddress.length === 0 ? <button className="connect-wallet" onClick={()=>connectEthereumWallet(dispatch)}>Connect Wallet</button> :
 
-                !isInstalled ? <button className="connect-wallet">Install MetaMask</button> :
+                !isInstalled ? <a className="connect-wallet" href="https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn">Install MetaMask</a> :
 
                 (connectedAddress.length > 0) && <div className="connected-address"><p>{connectedAddress}</p></div>
 
