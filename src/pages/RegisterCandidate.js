@@ -1,8 +1,6 @@
-import { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import CandidateRegistration from "../components/CandidateRegistration";
+import { useSelector } from "react-redux";
+import CandidateRegistration from "../components/candidateRegistration";
 import '../styling/register.css';
-import { RegResponse } from "../actions";
 import Modal from "../components/Modal";
 
 
