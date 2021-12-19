@@ -10,7 +10,7 @@ Devo is a dapp built on the ethereum blockchain. The smart contract can be found
 
 The purpose of this client application is to visualize how an application can interact with a smart contract and how DEVO smart contract can be used to solve voting issues.
 
-This application isn't 100% secured as an identity can register with various addresses however the security of a decentralized voting system can improved with the advent of AI. We can incorporate facial recognition mmodel and biometrics to enhance the security of this sytem.
+This application isn't 100% secured as an identity can register with various addresses however the security of a decentralized voting system can improved with the advent of AI. Facial recognition model can be integrated with biometrics to enhance the security of the system.
 
 
 ### HOW THIS SYSTEM WAS BUILT
