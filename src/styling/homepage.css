@@ -209,6 +209,19 @@
     width: fit-content;
 }
 
+.welcome-msg .install-meta {
+    background: linear-gradient(45deg,   rgb(175, 66, 97, .9), rgb(72, 161, 221, .9));
+    padding: 1em;
+    text-decoration: none;
+    border-radius: 5px;
+    display: flex;
+    width: fit-content;
+    font-weight:bold;
+    color:  rgb(24, 1, 24);
+   
+
+}
+
 @media only screen and (max-width:560px){
 
     .welcome-msg {
@@ -221,12 +234,13 @@
         
     }
 
-    .connect-wallet {
+    .connect-wallet, .install-meta {
         font-size: 7px;
         padding: 10px;
         padding-top: 6px;
         padding-bottom: 6px;
     }
+
 
     .instruction-cont {
         flex-direction: column;

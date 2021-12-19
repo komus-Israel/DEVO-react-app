@@ -160,8 +160,12 @@ export const checkIfAddressIsRegistered=async(address)=>{
     const isWeb3 = loadWeb3()
     const contract = await loadContract(isWeb3)
     const accountFromWeb3 = await isWeb3.eth.getAccounts()
-    const isRegistered = await contract.methods.registered(accountFromWeb3[0]).call()
-    return isRegistered
+
+    if (accountFromWeb3.length > 0) {
+        const isRegistered = await contract.methods.registered(accountFromWeb3[0]).call()
+        return isRegistered
+    }
+    
 }
 
 export const getVoteStatus=async(dispatch)=>{
