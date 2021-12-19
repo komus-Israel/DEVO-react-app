@@ -37,12 +37,12 @@
     padding: 1em;
     border-radius: 10px;
     margin-right: 10px;
-}
-
-.header-options a {
+    cursor: pointer;
     color: white;
     text-decoration: none;
 }
+
+
 
 @media only screen and (max-width:560px){
     .navbar .header-options {
