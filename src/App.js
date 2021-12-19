@@ -1,5 +1,6 @@
 import './App.css';
 import DevoHomePage from './pages/HomePage';
+import WrongNetWork from './pages/WrongNetwork';
 import { BrowserRouter as Router, Route, Switch, BrowserRouter } from 'react-router-dom';
 import RegisterCandidate from './pages/RegisterCandidate';
 import { useEffect } from 'react';
@@ -24,11 +25,7 @@ function App() {
   //  load web3
 
   const isWeb3  = loadWeb3()
-
-
-  // load contract
-
-  const contract = loadContract(isWeb3)
+  
 
   const electorateAddress = useSelector(
     state => state.addressReducer
@@ -36,23 +33,41 @@ function App() {
 
 
   useEffect(()=>{
-
-
     
     
     const checkEth = checkEthereum()
     checkEth && dispatch(installedWallet())
 
     //  dispatch the deployer address
+
+
+    const handleContract=async()=>{
+      const contract = await loadContract(isWeb3)
+
+      if (contract) {
+        await loadDeployerAddress(dispatch, contract)
+
+        //  load the registered candidates
+        await loadRegisteredCandidates(dispatch)
+
+        // fetch the number of registered electorates
+        fetchNoOfElectorates(dispatch) 
+
+      } else {
+        alert("no contract")
+      }
+
+      
+  }
     
-    loadDeployerAddress(dispatch, contract)
+    
+    
 
 
-    //  load the registered candidates
-    loadRegisteredCandidates(dispatch)
+    
+    
 
-    // fetch the number of registered electorates
-    fetchNoOfElectorates(dispatch)
+    
 
   
     const handleWalletInstallation= async ()=>{
@@ -71,6 +86,9 @@ function App() {
         }
 
     handleWalletInstallation()
+    handleContract()
+
+    
 
     
   }, [dispatch])
@@ -82,7 +100,8 @@ function App() {
             <div className="App">
 
               <Switch>
-                  <Route exact path='/' component={DevoHomePage}/>
+
+                  <Route exact path='/' component={DevoHomePage} /> 
 
                   <Route path='/candidate-register' 
                   render={

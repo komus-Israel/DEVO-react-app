@@ -97,12 +97,25 @@ export const loadContract= async(web3)=>{
         const abi = Vote.abi
 
         //  use the network ID to get the contract address
-        const contractAddress = networks[networkID].address
 
+        try {
+            //return contract
+            const contractAddress = networks[networkID].address
 
-        const contract = new web3.eth.Contract(abi, contractAddress)
+            console.log(contractAddress)
+    
+    
+            const contract = new web3.eth.Contract(abi, contractAddress)
 
-        return contract
+            return contract
+        } catch (err) {
+            return false
+        }
+        
+        
+
+        
+        
     
 }
 
@@ -114,6 +127,7 @@ export const loadDeployerAddress=async (dispatch, loadContract)=>{
     localStorage.setItem('deployer', deployerAddress)
     
     dispatch(deployer(deployerAddress))
+    return true
     
 }
 
