@@ -50,10 +50,9 @@ const Candidate= ({candidate})=>{
                 <div className="candidate-profile" style= { contStyle} onClick=
                 {
 
-                    ()=> (!voteStatus && electorateAddress) ? vote(dispatch, electorateAddress[0],candidate.candidateAddress) :
+                    ()=> (!voteStatus && electorateAddress.length > 0) ? vote(dispatch, electorateAddress[0],candidate.candidateAddress) :
 
-                            (!voteStatus && electorateAddress.length ===0  ) ? alert('kindly register') :
-
+                            (!voteStatus && electorateAddress.length ===0  ) ? alert("can't detect any connected address") :
 
                             (voteStatus && electorateAddress.length > 0)  && alert("you can't vote more than once")
                    
