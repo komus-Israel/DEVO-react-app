@@ -101,9 +101,6 @@ export const loadContract= async(web3)=>{
         try {
             //return contract
             const contractAddress = networks[networkID].address
-
-            console.log(contractAddress)
-    
     
             const contract = new web3.eth.Contract(abi, contractAddress)
 
@@ -157,6 +154,16 @@ export const fetchNoOfElectorates=async(dispatch)=>{
     dispatch(getNoOfElectorates(noOfElectorates))
     
    
+}
+
+export const checkIfAddressIsRegistered=async(address)=>{
+    const isWeb3 = loadWeb3()
+    const contract = await loadContract(isWeb3)
+
+    console.log(address)
+    const isRegistered = await contract.methods.registered(address).call()
+    console.log(isRegistered)
+    return isRegistered
 }
 
 export const getVoteStatus=async(dispatch)=>{
@@ -311,6 +318,8 @@ export const handleElectorateReg=async (e,firstName, middleName, lastName, nin, 
 
     
 }
+
+
 
 
 

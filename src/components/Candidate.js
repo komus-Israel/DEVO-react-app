@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux"
-import { vote, getVoteCount } from "../functions/functions"
+import { vote, getVoteCount, checkIfAddressIsRegistered } from "../functions/functions"
 import { useEffect, useState } from 'react'
 
 
@@ -20,6 +20,7 @@ const Candidate= ({candidate})=>{
 
 
     const [voteCount, setVoteCount] = useState('')
+    const [registered, setregistered] = useState(false)
 
     const imgStyle = {
         zIndex: voteStatus && -100000000000,
@@ -40,20 +41,28 @@ const Candidate= ({candidate})=>{
             setVoteCount(count)       
         }
        
-        getCountFromPromise()
+        const checkIfRegistered=async()=>{
+            const registeredStatus = await checkIfAddressIsRegistered(electorateAddress[0])
+            setregistered(registeredStatus)
+        }
 
-    })
+        getCountFromPromise()
+        checkIfRegistered()
+
+    }, [])
     return(
 
         candidate.ipfsHash.length > 0 && (
                 <div className="candidate-profile" style= { contStyle} onClick=
                 {
 
-                    ()=> (!voteStatus && electorateAddress.length > 0) ? vote(dispatch, electorateAddress[0],candidate.candidateAddress) :
+                    ()=> (!voteStatus && electorateAddress.length > 0 && registered) ? vote(dispatch, electorateAddress[0],candidate.candidateAddress) :
 
                             (!voteStatus && electorateAddress.length ===0  ) ? alert("can't detect any connected address") :
 
-                            (voteStatus && electorateAddress.length > 0)  && alert("you can't vote more than once")
+                            (voteStatus && electorateAddress.length > 0)  ? alert("you can't vote more than once") :
+
+                            !registered && alert("you haven't been approved for voting. Kindly register your address")
                    
                 }
                 >

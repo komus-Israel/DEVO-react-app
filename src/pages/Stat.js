@@ -28,7 +28,7 @@ const Stat=()=>{
         state => state.countVoteReducer
     )
 
-    const getContractStatus = useSelector(
+    const isContract = useSelector(
         state => state.contractReducer
     )
 
@@ -39,7 +39,7 @@ const Stat=()=>{
        
         const checkContract=()=>{
 
-            if(getContractStatus) {
+            if(isContract) {
                 getTotalVote(dispatch)
             } 
         }

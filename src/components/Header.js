@@ -1,5 +1,6 @@
 import '../styling/nav.css';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 
 
@@ -7,7 +8,9 @@ import { Link } from 'react-router-dom';
 const Nav =({voteRef, registerRef})=>{
 
 
-    
+    const isContract = useSelector(
+        state => state.contractReducer
+    )
 
    const scrollTo =(ref)=>{
        
@@ -22,12 +25,18 @@ const Nav =({voteRef, registerRef})=>{
     return (
         <nav className='navbar'>
             <h1>DEVO</h1>
-            <div className='header-options'>
-                    <a onClick={()=>scrollTo(voteRef)}>Vote</a>
-                    <a onClick={()=>scrollTo(registerRef)}>Register</a>
-                    <Link to="/stat">Stat</Link>
+
+            {
+                isContract && (
+                    <div className='header-options'>
+                        <a onClick={()=>scrollTo(voteRef)}>Vote</a>
+                        <a onClick={()=>scrollTo(registerRef)}>Register</a>
+                        <Link to="/stat">Stat</Link>
                    
-            </div>
+                    </div>
+                )
+            }
+           
         </nav>
     )
 }
