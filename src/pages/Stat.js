@@ -1,8 +1,9 @@
 import '../styling/stat.css';
 import StatData from '../components/StatData';
 import { useSelector, useDispatch } from 'react-redux';
-import { getTotalVote } from '../functions/functions';
+import { getTotalVote, loadContract, loadWeb3 } from '../functions/functions';
 import { useEffect, useState } from 'react';
+
 
 
 
@@ -20,11 +21,15 @@ const Stat=()=>{
         state => state.allElectoratesReducer
     )
 
-    const [ totalVoteCount, setTotalVoteCount ] = useState('')
+    
 
 
     const count = useSelector(
         state => state.countVoteReducer
+    )
+
+    const getContractStatus = useSelector(
+        state => state.contractReducer
     )
 
     
@@ -32,8 +37,15 @@ const Stat=()=>{
     useEffect(()=>{
 
        
+        const checkContract=()=>{
+
+            if(getContractStatus) {
+                getTotalVote(dispatch)
+            } 
+        }
         
-        getTotalVote(dispatch)
+
+        checkContract()
             
        
     }, [])

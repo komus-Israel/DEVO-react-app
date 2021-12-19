@@ -100,3 +100,10 @@ export const countVote=(count)=>{
         payload:count
     })
 }
+
+export const setContract=()=>{
+    return({
+        type:"CONTRACT-AVAILABLE",
+        
+    })
+}

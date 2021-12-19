@@ -11,7 +11,7 @@ import {
         loadContract, loadRegisteredCandidates, 
         fetchNoOfElectorates} from './functions/functions';
 
-import { installedWallet, address } from './actions';
+import { installedWallet, address, setContract } from './actions';
 import { Redirect } from 'react-router';
 import Stat from './pages/Stat';
 
@@ -53,8 +53,10 @@ function App() {
         // fetch the number of registered electorates
         fetchNoOfElectorates(dispatch) 
 
+        dispatch(setContract())
+
       } else {
-        alert("no contract")
+        alert("connect to the rinkeby network to get started")
       }
 
       

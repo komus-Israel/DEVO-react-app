@@ -10,6 +10,7 @@ const Nav =({voteRef, registerRef})=>{
     
 
    const scrollTo =(ref)=>{
+       
         ref.current.scrollIntoView(
             {
                 behavior: 'smooth',
