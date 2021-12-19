@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 
 
 
-const Nav =({vref})=>{
+const Nav =({voteRef, registerRef})=>{
 
 
-    console.log(vref)
+    
 
    const scrollTo =(ref)=>{
         ref.current.scrollIntoView(
@@ -22,8 +22,8 @@ const Nav =({vref})=>{
         <nav className='navbar'>
             <h1>DEVO</h1>
             <div className='header-options'>
-                    <a onClick={()=>scrollTo(vref)}>Vote</a>
-                    <a onClick={()=>scrollTo(vref)}>Register</a>
+                    <a onClick={()=>scrollTo(voteRef)}>Vote</a>
+                    <a onClick={()=>scrollTo(registerRef)}>Register</a>
                     <Link to="/stat">Stat</Link>
                    
             </div>

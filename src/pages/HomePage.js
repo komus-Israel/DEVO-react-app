@@ -15,6 +15,7 @@ import { useRef } from 'react';
 const DevoHomePage=()=>{
 
     const voteRef = useRef(null)
+    const registerRef = useRef(null)
 
     const voting = useSelector(
         state => state.votingReducer
@@ -44,7 +45,7 @@ const DevoHomePage=()=>{
                             </div>
                 )
             }
-            <Nav vref={voteRef}/>
+            <Nav voteRef={voteRef} registerRef={registerRef}/>
             <WelcomeMsg />
            
 
@@ -52,7 +53,7 @@ const DevoHomePage=()=>{
 
                 <h2 className="get-started" >Let's Get You Started</h2>
 
-                <RegistrationForm />
+                <RegistrationForm registerRef={registerRef}/>
 
                 <Instructions />
 

@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { handleElectorateReg } from '../functions/functions';
 import Modal from './Modal';
 
-const RegistrationForm=()=>{
+const RegistrationForm=({registerRef})=>{
 
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
@@ -27,7 +27,7 @@ const RegistrationForm=()=>{
     const dispatch = useDispatch()
 
     return (
-        <form className="registration-form" id="reg">
+        <form className="registration-form" id="reg" ref={registerRef}>
 
             {
                 registering && <div className="modal">
