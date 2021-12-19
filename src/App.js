@@ -9,9 +9,9 @@ import {
          checkEthereum, checkWalletConnection, 
         loadBlockchainData, loadWeb3, loadDeployerAddress, 
         loadContract, loadRegisteredCandidates, 
-        fetchNoOfElectorates} from './functions/functions';
+        fetchNoOfElectorates, checkIfAddressIsRegistered} from './functions/functions';
 
-import { installedWallet, address, setContract } from './actions';
+import { installedWallet, address, setContract, approveElectorate } from './actions';
 import { Redirect } from 'react-router';
 import Stat from './pages/Stat';
 
@@ -51,9 +51,22 @@ function App() {
         await loadRegisteredCandidates(dispatch)
 
         // fetch the number of registered electorates
-        fetchNoOfElectorates(dispatch) 
+        await fetchNoOfElectorates(dispatch) 
+
+        // get is the connected address is registered
+
+        const checkIfRegistered = await checkIfAddressIsRegistered(electorateAddress)
+
+        if (checkIfRegistered) {
+          dispatch(approveElectorate)
+        }
+
+        
 
         dispatch(setContract())
+       
+
+        
 
       } else {
         alert("connect to the rinkeby network to get started")

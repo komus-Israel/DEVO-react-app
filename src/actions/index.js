@@ -107,3 +107,9 @@ export const setContract=()=>{
         
     })
 }
+
+export const approveElectorate=()=>{
+    return({
+        typed:"APPROVED"
+    })
+}

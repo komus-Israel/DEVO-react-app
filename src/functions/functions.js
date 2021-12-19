@@ -160,9 +160,7 @@ export const checkIfAddressIsRegistered=async(address)=>{
     const isWeb3 = loadWeb3()
     const contract = await loadContract(isWeb3)
 
-    console.log(address)
     const isRegistered = await contract.methods.registered(address).call()
-    console.log(isRegistered)
     return isRegistered
 }
 

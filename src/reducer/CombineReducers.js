@@ -11,6 +11,7 @@ import votingReducer from "./votingReducer";
 import allElectoratesReducer from "./allElectoratesReducer";
 import countVoteReducer from "./countVoteReducer";
 import contractReducer from "./contractReducer";
+import aRegisteredElectorateReducer from "./isRegElecReducer";
 
 const allReducers = combineReducers(
     {
@@ -25,7 +26,8 @@ const allReducers = combineReducers(
         votingReducer,
         allElectoratesReducer,
         countVoteReducer,
-        contractReducer
+        contractReducer,
+        aRegisteredElectorateReducer
        
     }
 )
