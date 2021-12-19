@@ -5,3 +5,35 @@
 To interact with this project, visit [here](https://devodapp.herokuapp.com).
 
 ![devo](devo.PNG)
+
+Devo is a dapp built on the ethereum blockchain. The smart contract can be found [here](https://github.com/komus-Israel/DEVO-smart-contract) 
+
+The purpose of this client application is to visualize how an application can interact with a smart contract and how DEVO smart contract can be used to solve voting issues.
+
+This application isn't 100% secured as an identity can register with various addresses however the security of a decentralized voting system can improved with the advent of AI. We can incorporate facial recognition mmodel and biometrics to enhance the security of this sytem.
+
+
+### HOW THIS SYSTEM WAS BUILT
+
+* Smart contract was written in solidity
+
+* Unit testing and deveployment using Truffle
+
+* Client application built with react
+
+* Only the deployer of the contract is authorized to register candidates
+
+* Candidates image assets are stored on pinata IPFS
+
+
+### HOW TO INTERACT WITH THIS APPLICATION
+
+* Install metamask extension in your browser
+
+* Connect your wallet Address using the Rinkeby test net
+
+* Ensure you have some test ether
+
+* Register to vote your desired candidate
+
+* Once your registration has been approved, you can vote in your desired candidate
