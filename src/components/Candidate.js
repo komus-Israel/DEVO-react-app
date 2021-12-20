@@ -44,8 +44,7 @@ const Candidate= ({candidate})=>{
         }
 
         getCountFromPromise()
-        console.log(voteCount)
-        
+    
     })
 
 
@@ -66,7 +65,7 @@ const Candidate= ({candidate})=>{
 
                             (!voteStatus && electorateAddress.length ===0  ) ? alert("can't detect any connected address") :
 
-                            (voteStatus && electorateAddress.length > 0)  ? vote(dispatch, electorateAddress[0],candidate.candidateAddress) ://alert("you can't vote more than once") :
+                            (voteStatus && electorateAddress.length > 0)  ? alert("you can't vote more than once") :
 
                             !registered && alert("you haven't been approved for voting. Kindly register your address")
                             
