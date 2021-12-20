@@ -24,6 +24,10 @@ const RegistrationForm=({registerRef})=>{
         state => state.RegReducer
     )
 
+    const registered = useSelector(
+        state => state.aRegisteredElectorateReducer
+    )
+
     const dispatch = useDispatch()
 
     return (
@@ -51,7 +55,7 @@ const RegistrationForm=({registerRef})=>{
             </div>
 
             {
-                (address.length > 0 && firstName.length > 0  && lastName.length > 0 && middleName.length > 0 && nin.length > 0 && state.length > 0)
+                (!registered && address.length > 0 && firstName.length > 0  && lastName.length > 0 && middleName.length > 0 && nin.length > 0 && state.length > 0)
                 
                 ? 
                 
