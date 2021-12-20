@@ -4,6 +4,8 @@
 
 To interact with this project, visit [here](https://devodapp.herokuapp.com).
 
+Project demo can be accessed [here](https://www.loom.com/share/7a1e03f3fe8340ae82df9b2a5494dffc)
+
 ![devo](devo.PNG)
 
 Devo is a dapp built on the ethereum blockchain. The smart contract can be found [here](https://github.com/komus-Israel/DEVO-smart-contract) 
