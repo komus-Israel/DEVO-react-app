@@ -62,9 +62,17 @@ const RegistrationForm=({registerRef})=>{
                 <button onClick={(e)=>handleElectorateReg(e,firstName, middleName, lastName, nin, state, address[0], dispatch, setFirstName, setLastName, setMiddleName, setNIN, setState)} className="register">register</button>
                 
                 : 
+
+                registered ? <button onClick = {(e)=>{
+                    e.preventDefault()
+                    alert("your address cant be registered twice")
+                }} className="register">register</button> :
                 
                 
-                <button disabled className="register">register</button>
+                <button onClick={(e)=>{
+                    e.preventDefault()
+                    alert('ensure you connect your address and fill the form completely')}
+                } className="register" >register</button>
             }
             
             
