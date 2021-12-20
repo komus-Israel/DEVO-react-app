@@ -32,24 +32,30 @@ const Candidate= ({candidate})=>{
        background: voteStatus ? "linear-gradient(180deg,   rgba(175, 66, 97, .8), rgba(72, 161, 221, .8))" : "linear-gradient(180deg,   rgba(175, 66, 97), rgba(72, 161, 221))"
     }
 
+    
 
-
+    
     
 
     useEffect(()=>{
-
         const getCountFromPromise = async() => {
             const count = await getVoteCount(candidate.candidateAddress) 
             setVoteCount(count)       
         }
-       
 
         getCountFromPromise()
-
-        console.log(candidate)
-
-
+        console.log(voteCount)
+        
     }, [])
+
+
+    
+
+    
+
+        
+       
+
     return(
 
         candidate.ipfsHash.length > 0 && (
@@ -63,12 +69,14 @@ const Candidate= ({candidate})=>{
                             (voteStatus && electorateAddress.length > 0)  ? alert("you can't vote more than once") :
 
                             !registered && alert("you haven't been approved for voting. Kindly register your address")
+                            
                    
                 }
                 >
                             <img src={`https://gateway.pinata.cloud/ipfs/${candidate.ipfsHash}`} alt = "incoming" className="candidate-image" style={imgStyle}/>
                             <p className="candidate-name">{candidate.name}</p>
                             <p>{voteCount}</p>
+                           
                             
                             
                  </div>

@@ -213,7 +213,7 @@ export const getTotalVote=async(dispatch)=>{
     )
 
 
-    dispatch(countVote(eachVoteCount.reduce(sum)))
+    eachVoteCount.length > 0 && dispatch(countVote(eachVoteCount.reduce(sum)))
     
     
    
