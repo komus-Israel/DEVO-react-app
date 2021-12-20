@@ -46,6 +46,8 @@ const Candidate= ({candidate})=>{
 
         getCountFromPromise()
 
+        console.log(candidate)
+
 
     }, [])
     return(
@@ -66,7 +68,6 @@ const Candidate= ({candidate})=>{
                 >
                             <img src={`https://gateway.pinata.cloud/ipfs/${candidate.ipfsHash}`} alt = "incoming" className="candidate-image" style={imgStyle}/>
                             <p className="candidate-name">{candidate.name}</p>
-                            <h2 className='vote-count'>{candidate.voteCount}</h2>
                             <p>{voteCount}</p>
                             
                             
